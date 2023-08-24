@@ -9,3 +9,65 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Movies_Genres {
+  id      Int    @id @default(autoincrement())
+  genres  Genres @relation(fields: [genreId], references: [id])
+  genreId Int
+  movie   Movie  @relation(fields: [movieId], references: [id])
+  movieId Int
+}
+
+model Genres {
+  id            Int             @id @default(autoincrement())
+  name          String          @db.VarChar(255)
+  Movies_Genres Movies_Genres[]
+}
+
+model Review_Tags {
+  id       Int     @id @default(autoincrement())
+  tags     Tags    @relation(fields: [tagId], references: [id])
+  tagId    Int
+  review   Reviews @relation(fields: [reviewId], references: [id])
+  reviewId Int
+}
+
+model Tags {
+  id          Int           @id @default(autoincrement())
+  name        String        @db.VarChar(255)
+  Review_Tags Review_Tags[]
+}
+
+model Reviews {
+  id          Int           @id @default(autoincrement())
+  title       String        @db.VarChar(255)
+  content     String        @db.Text
+  user        User          @relation(fields: [userId], references: [id])
+  userId      Int
+  movie       Movie         @relation(fields: [movieId], references: [id])
+  movieId     Int
+  Review_Tags Review_Tags[]
+}
+
+model Movie {
+  id            Int             @id @default(autoincrement())
+  title         String          @db.VarChar(255)
+  description   String          @db.Text
+  year          Int             @db.Integer
+  rating        Int             @db.Integer
+  director      String          @db.VarChar(255)
+  studio        String          @db.VarChar(255)
+  language      String          @db.VarChar(255)
+  reviews       Reviews[]
+  Movies_Genres Movies_Genres[]
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  email    String    @unique @db.VarChar(255)
+  username String    @unique @db.VarChar(255)
+  password String    @db.VarChar(255)
+  isAdmin  Boolean   @default(false) @db.Boolean
+  avatar   String    @db.Text
+  reviews  Reviews[]
+}
