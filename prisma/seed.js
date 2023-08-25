@@ -8,9 +8,8 @@ const main = async () => {
   // USERS (3 reg. + 1 admin)
   const user1 = await prisma.user.create({
     data: {
-      username: "Kevin",
-      password: "kevinpw",
-      email: "kevin@gmail.com",
+      username: "Nivek",
+      email: "kevin@hotmail.com",
       isAdmin: true,
       password: await bcrypt.hash("kevinpw", 10),
       avatar: "https://www.google.com/search?q=dog+picture&tbm=isch&ved=2ahUKEwi2v6ua0PiAAxUgFN4AHZsPB8EQ2-cCegQIABAA&oq=dog+picture&gs_lcp=CgNpbWcQAzIICAAQgAQQsQMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BAgjECc6CwgAEIAEELEDEIMBOgcIABCKBRBDUIY4WMdTYNZXaAJwAHgAgAFniAG8CJIBBDEzLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=_gvpZLbIOaCo-LYPm5-ciAw&rlz=1C5CHFA_enUS1013US1013#imgrc=PpmCvrB3OtU3hM",
@@ -19,8 +18,7 @@ const main = async () => {
 
   const user2 = await prisma.user.create({
     data: {
-      username: "James",
-      password: "jamespw",
+      username: "SemaJ",
       email: "james@gmail.com",
       isAdmin: false,
       password: await bcrypt.hash("jamespw", 10),
@@ -30,9 +28,8 @@ const main = async () => {
 
   const user3 = await prisma.user.create({
     data: {
-      username: "Robert",
-      password: "robertpw",
-      email: "robert@gmail.com",
+      username: "Trebor",
+      email: "robert@aol.com",
       isAdmin: false,
       password: await bcrypt.hash("robertpw", 10),
       avatar: "https://www.google.com/search?q=dog+picture&tbm=isch&ved=2ahUKEwi2v6ua0PiAAxUgFN4AHZsPB8EQ2-cCegQIABAA&oq=dog+picture&gs_lcp=CgNpbWcQAzIICAAQgAQQsQMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BAgjECc6CwgAEIAEELEDEIMBOgcIABCKBRBDUIY4WMdTYNZXaAJwAHgAgAFniAG8CJIBBDEzLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=_gvpZLbIOaCo-LYPm5-ciAw&rlz=1C5CHFA_enUS1013US1013#imgrc=PpmCvrB3OtU3hM",
@@ -42,15 +39,13 @@ const main = async () => {
 
   const user4 = await prisma.user.create({
     data: {
-      username: "Liu",
-      password: "liupw",
-      email: "liu@gmail.com",
+      username: "Uil",
+      email: "liu@yahoo.com",
       isAdmin: false,
       password: await bcrypt.hash("liupw", 10),
       avatar: "https://www.google.com/search?q=dog+picture&tbm=isch&ved=2ahUKEwi2v6ua0PiAAxUgFN4AHZsPB8EQ2-cCegQIABAA&oq=dog+picture&gs_lcp=CgNpbWcQAzIICAAQgAQQsQMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BAgjECc6CwgAEIAEELEDEIMBOgcIABCKBRBDUIY4WMdTYNZXaAJwAHgAgAFniAG8CJIBBDEzLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=_gvpZLbIOaCo-LYPm5-ciAw&rlz=1C5CHFA_enUS1013US1013#imgrc=PpmCvrB3OtU3hM",
     }
   });
-
 
   //GENRES:
   const genreHorror = await prisma.genres.create({
