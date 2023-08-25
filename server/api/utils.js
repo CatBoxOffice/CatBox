@@ -8,6 +8,16 @@ const requireUser  = (req, res, next) =>{
   }
 }
 
+const requireAdmin = (req, res, next) => {
+  // Check if user is logged in as an admin
+  if (req.userId && req.isAdmin) {
+    next();
+  } else {
+    res.status(401).send({ message: "Admin unauthorized" });
+  }
+}
+
 module.exports = {
-  requireUser
+  requireUser,
+  requireAdmin,
 }
