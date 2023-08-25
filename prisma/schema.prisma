@@ -11,11 +11,10 @@ datasource db {
 }
 
 model Movies_Genres {
-  id      Int    @id @default(autoincrement())
-  genres  Genres @relation(fields: [genreId], references: [id])
-  genreId Int
+  movieId Int    @unique
   movie   Movie  @relation(fields: [movieId], references: [id])
-  movieId Int
+  genreId Int
+  genres  Genres @relation(fields: [genreId], references: [id])
 }
 
 model Genres {
@@ -25,11 +24,10 @@ model Genres {
 }
 
 model Review_Tags {
-  id       Int     @id @default(autoincrement())
-  tags     Tags    @relation(fields: [tagId], references: [id])
-  tagId    Int
+  reviewId Int     @unique
   review   Reviews @relation(fields: [reviewId], references: [id])
-  reviewId Int
+  tagId    Int
+  tags     Tags    @relation(fields: [tagId], references: [id])
 }
 
 model Tags {
