@@ -1,13 +1,12 @@
 const router = require("express").Router();
-
+const { requireUser } = require("./utils");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 //Returns all reviews
 router.get("/", async (req, res) => {
   try {
-    const reviews = await prisma.review.findMany({
-    });
+    const reviews = await prisma.review.findMany({});
     res.send(reviews);
   } catch (error) {
     res.send(error);
@@ -33,7 +32,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //Creates a new review
-router.post("/", async (req, res) => {
+router.post("/", requireUser, async (req, res) => {
   try {
     const review = await prisma.review.create({
       data: req.body,
@@ -46,7 +45,7 @@ router.post("/", async (req, res) => {
 });
 
 //Updates review with specified id
-router.put("/:id", async (req, res) => {
+router.put("/:id", requireUser, async (req, res) => {
   try {
     const review = await prisma.review.update({
       where: {
@@ -65,7 +64,7 @@ router.put("/:id", async (req, res) => {
 });
 
 //Deletes a review
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", requireUser, async (req, res) => {
   try {
     const review = await prisma.review.delete({
       where: {
