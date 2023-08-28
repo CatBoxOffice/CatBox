@@ -11,32 +11,34 @@ datasource db {
 }
 
 model Movies_Genres {
-  movieId Int    @unique
-  movie   Movie  @relation(fields: [movieId], references: [id])
+  id      Int   @id @default(autoincrement())
+  movieId Int
+  movie   Movie @relation(fields: [movieId], references: [id])
   genreId Int
-  genres  Genres @relation(fields: [genreId], references: [id])
+  genres  Genre @relation(fields: [genreId], references: [id])
 }
 
-model Genres {
+model Genre {
   id            Int             @id @default(autoincrement())
   name          String          @db.VarChar(255)
   Movies_Genres Movies_Genres[]
 }
 
 model Review_Tags {
-  reviewId Int     @unique
-  review   Reviews @relation(fields: [reviewId], references: [id])
+  id       Int    @id @default(autoincrement())
+  reviewId Int
+  review   Review @relation(fields: [reviewId], references: [id])
   tagId    Int
-  tags     Tags    @relation(fields: [tagId], references: [id])
+  tags     Tag    @relation(fields: [tagId], references: [id])
 }
 
-model Tags {
+model Tag {
   id          Int           @id @default(autoincrement())
   name        String        @db.VarChar(255)
   Review_Tags Review_Tags[]
 }
 
-model Reviews {
+model Review {
   id          Int           @id @default(autoincrement())
   title       String        @db.VarChar(255)
   content     String        @db.Text
@@ -52,20 +54,20 @@ model Movie {
   title         String          @db.VarChar(255)
   description   String          @db.Text
   year          Int             @db.Integer
-  rating        Int             @db.Integer
+  rating        String          @db.VarChar(255)
   director      String          @db.VarChar(255)
   studio        String          @db.VarChar(255)
   language      String          @db.VarChar(255)
-  reviews       Reviews[]
+  reviews       Review[]
   Movies_Genres Movies_Genres[]
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
-  email    String    @unique @db.VarChar(255)
-  username String    @unique @db.VarChar(255)
-  password String    @db.VarChar(255)
-  isAdmin  Boolean   @default(false) @db.Boolean
-  avatar   String    @db.Text
-  reviews  Reviews[]
+  id       Int      @id @default(autoincrement())
+  email    String   @unique @db.VarChar(255)
+  username String   @unique @db.VarChar(255)
+  password String   @db.VarChar(255)
+  isAdmin  Boolean  @default(false) @db.Boolean
+  avatar   String   @db.Text
+  reviews  Review[]
 }
