@@ -6,6 +6,9 @@ import Rubric from "./Rubric";
 import AddReview from "./AddReview";
 import Register from "./register/Register";
 import AllMovies from "./movies/AllMovies";
+import AddMovie from "./movies/AddMovie";
+import Profile from "./Profile";
+import Users from "./Users";
 import SingleMovie from "./movies/SingleMovie";
 import Login from "./login/Login";
 
