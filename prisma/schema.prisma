@@ -53,6 +53,7 @@ model Movie {
   id            Int             @id @default(autoincrement())
   title         String          @db.VarChar(255)
   description   String          @db.Text
+  poster        String          @db.Text
   year          Int             @db.Integer
   rating        String          @db.VarChar(255)
   director      String          @db.VarChar(255)
