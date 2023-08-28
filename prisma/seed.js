@@ -78,6 +78,8 @@ const main = async () => {
     data: {
       title: "TopGun",
       description: "A movie about pilots trying to save the country",
+      poster:
+        "https://m.media-amazon.com/images/M/MV5BZjQxYTA3ODItNzgxMy00N2Y2LWJlZGMtMTRlM2JkZjI1ZDhhXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_.jpg",
       year: 1986,
       rating: "PG-13",
       director: "Tony Scott",
@@ -90,6 +92,8 @@ const main = async () => {
     data: {
       title: "Keith",
       description: "Fantastic film that shows us the meaning of love",
+      poster:
+        "https://cdn.traileraddict.com/content/image-entertainment/keith.jpg",
       year: 2008,
       rating: "PG-13",
       director: "Rebecca Hobbs",
@@ -102,6 +106,8 @@ const main = async () => {
     data: {
       title: "Terminal",
       description: "Tom Hanks got stuck at a terminal, and has accent",
+      poster:
+        "https://www.originalfilmart.com/cdn/shop/products/Terminal_2004_original_film_art_1200x.jpg?v=1602086404",
       year: 2004,
       rating: "PG-13",
       director: "Walter F. Parkes",
@@ -114,6 +120,8 @@ const main = async () => {
     data: {
       title: "Maverick",
       description: " This movie has nothing to do with Tom Cruise",
+      poster:
+        "https://www.originalfilmart.com/cdn/shop/files/Maverick_1994_original_film_art.webp?v=1686774401",
       year: 1994,
       rating: "PG-13",
       director: "Paramount Pictures",
@@ -127,6 +135,8 @@ const main = async () => {
       title: "The Avengers",
       description:
         " It s a long movie about a team saving the planet for the fifth time",
+      poster:
+        "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
       year: 2012,
       rating: "PG-13",
       director: "Anthony Russo",
