@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 // Get all Genres
 router.get(`/`, async (req, res) => {
   try {
-    const allGenres = await prisma.genres.findMany();
+    const allGenres = await prisma.genre.findMany();
 
     res.send(allGenres);
   } catch (error) {
@@ -17,7 +17,7 @@ router.get(`/`, async (req, res) => {
 // Get Genre with specified id
 router.get(`/:id`, async (req, res) => {
   try {
-    const genre = await prisma.genres.findUnique({
+    const genre = await prisma.genre.findUnique({
       where: {
         id: Number(req.params.id),
       },
@@ -35,11 +35,11 @@ router.get(`/:id`, async (req, res) => {
 // Create a new Genre
 router.post(`/`, requireAdmin, async (req, res) => {
   try {
-    const newGenre = await prisma.genres.create({
+    const newGenre = await prisma.genre.create({
       data: req.body,
     });
 
-    res.send({ message: `Genre created`, genres: newGenre });
+    res.send({ message: `Genre created`, genre: newGenre });
   } catch (error) {
     res.send({ message: `Error creating Genre`, error });
   }
@@ -48,14 +48,14 @@ router.post(`/`, requireAdmin, async (req, res) => {
 // Updates Genre with specified id
 router.put(`/:id`, requireAdmin, async (req, res) => {
   try {
-    const updateGenre = await prisma.genres.update({
+    const updateGenre = await prisma.genre.update({
       where: {
         id: Number(req.params.id),
       },
       data: req.body,
     });
 
-    res.send({ message: `Genre updated`, genres: updateGenre });
+    res.send({ message: `Genre updated`, genre: updateGenre });
   } catch (error) {
     res.send({ message: `Error updating Genre`, error });
   }
@@ -64,13 +64,13 @@ router.put(`/:id`, requireAdmin, async (req, res) => {
 // Deletes a Genre
 router.delete(`/:id`, requireAdmin, async (req, res) => {
   try {
-    const deleteGenre = await prisma.genres.delete({
+    const deleteGenre = await prisma.genre.delete({
       where: {
         id: Number(req.params.id),
       },
     });
 
-    res.send({ message: `Genre deleted`, genres: deleteGenre });
+    res.send({ message: `Genre deleted`, genre: deleteGenre });
   } catch (error) {
     res.send({ message: `Error deleting movie`, error });
   }

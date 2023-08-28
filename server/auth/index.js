@@ -44,7 +44,7 @@ router.post("/signIn", async (req, res) => {
           // ⇑ Will return true if password is correct
     if (passwordMatch) {
       const token = jwt.sign({id: user.id}, process.env.JWT) // Uses .env package 
-      res.send(user);
+      res.send(token);
     } else {
       res.send({ message: "Invalid Login" });
     }
