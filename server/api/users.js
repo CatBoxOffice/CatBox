@@ -32,19 +32,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-//Creates a new user
-router.post("/", async (req, res) => {
-  try {
-    const user = await prisma.user.create({
-      data: req.body,
-    });
-
-    res.send(user);
-  } catch (error) {
-    res.send(error);
-  }
-});
-
 //Updates user with specified id
 router.put("/:id", async (req, res) => {
   try {

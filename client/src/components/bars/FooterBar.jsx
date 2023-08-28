@@ -1,3 +1,4 @@
+
 function FooterBar() {
     return (
         <div>
@@ -23,3 +24,4 @@ function FooterBar() {
 }
 
 export default FooterBar
+

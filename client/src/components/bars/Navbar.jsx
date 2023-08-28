@@ -1,3 +1,4 @@
+
 import { Routes, Route, Link } from "react-router-dom";
 import HomePage from "./Home";
 import AllMovies from "./movies/AllMovies";
@@ -45,3 +46,4 @@ function NavBar() {
 }
 
 export default NavBar;
+
