@@ -50,7 +50,7 @@ router.put(`/:id`, requireAdmin, async (req, res) => {
       data: req.body,
     });
 
-    res.send({ message: `Movie updated`, movie: newMovie });
+    res.send({ message: `Movie updated`, movie: updateMovie });
   } catch (error) {
     res.send({ message: `Error updating movie`, error });
   }
@@ -69,3 +69,5 @@ router.delete(`/:id`, requireAdmin, async (req, res) => {
     res.send({ message: `Error deleting movie`, error });
   }
 });
+
+module.exports = router;
