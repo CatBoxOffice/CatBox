@@ -120,7 +120,8 @@ const main = async () => {
     data: {
       title: "Maverick",
       description: " This movie has nothing to do with Tom Cruise",
-      poster: "https://i.ebayimg.com/images/g/L0UAAOSwLjtiVwE5/s-l1200.jpg",
+      poster:
+        "https://www.originalfilmart.com/cdn/shop/files/Maverick_1994_original_film_art.webp?v=1686774401",
       year: 1994,
       rating: "PG-13",
       director: "Paramount Pictures",
