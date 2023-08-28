@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 router.get(`/`, async (req, res) => {
   try {
-    const allTags = await prisma.tags.findMany();
+    const allTags = await prisma.tag.findMany();
 
     res.send(allTags);
   } catch (error) {
@@ -15,7 +15,7 @@ router.get(`/`, async (req, res) => {
 
 router.get(`/:id`, async (req, res) => {
   try {
-    const tag = await prisma.tags.findUnique({
+    const tag = await prisma.tag.findUnique({
       where: {
         id: Number(req.params.id),
       },
@@ -29,7 +29,7 @@ router.get(`/:id`, async (req, res) => {
 
 router.post(`/`, requireUser, async (req, res) => {
   try {
-    const newTag = await prisma.tags.create({
+    const newTag = await prisma.tag.create({
       data: req.body,
     });
 
@@ -41,7 +41,7 @@ router.post(`/`, requireUser, async (req, res) => {
 
 router.put(`/:id`, requireUser, async (req, res) => {
   try {
-    const updateTag = await prisma.tags.update({
+    const updateTag = await prisma.tag.update({
       where: {
         id: Number(req.params.id),
       },
@@ -56,7 +56,7 @@ router.put(`/:id`, requireUser, async (req, res) => {
 
 router.delete(`/:id`, requireAdmin, async (req, res) => {
   try {
-    const deleteTag = await prisma.tags.delete({
+    const deleteTag = await prisma.tag.delete({
       where: {
         id: Number(req.params.id),
       },
