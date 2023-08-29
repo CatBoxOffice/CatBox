@@ -3,9 +3,11 @@ import LoginForm from "./LoginForm";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [message, setMessage] = useState("");
 
-  console.log(loginInfo);
   useEffect(() => {
+    setMessage("");
     const attemptLogin = async () => {
       try {
         const response = await fetch(`/auth/signIn`, {
@@ -13,21 +15,37 @@ const Login = () => {
           headers: {
             "Content-Type": `application/json`,
           },
-          body: JSON.stringify(loginInfo)
+          body: JSON.stringify(loginInfo),
         });
 
         const result = await response.json();
-        console.log(result);
+        if (result.token) {
+          localStorage.setItem(`token`, result.token);
+          setLoggedIn(true);
+        } else {
+          setMessage(result.message);
+        }
       } catch (error) {
-        console.log(error);
+        alert(error);
       }
     };
     loginInfo.username ? attemptLogin() : null;
   }, [loginInfo]);
 
+  const signOutHandler = () => {
+    localStorage.removeItem(`token`);
+    setLoginInfo({});
+    setLoggedIn(false);
+  };
+
   return (
     <>
-      <LoginForm setLoginInfo={setLoginInfo} />
+      {message ? <p>{message}</p> : null}
+      {loggedIn ? (
+        <button onClick={signOutHandler}>Sign Out</button>
+      ) : (
+        <LoginForm setLoginInfo={setLoginInfo} />
+      )}
     </>
   );
 };
