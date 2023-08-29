@@ -5,13 +5,13 @@ function FooterBar() {
             <div id="copyright" align="center">
                 &copy; 2023 - 2023 www.catboxoffice.com
             </div>
-            <script>
+            {/* <script>
                 (function(){
                     let cpr = document.getElementById("copyright");
                     cpr.innerHTML = "&copy; 2023 - "+new Date().getFullYear()+" www.catboxoffice.com - All Rights Reserved.";
                     cpr.innerHTML += "<br/>Last Updated : "+document.lastModified;
                 })();
-            </script>
+            </script> */}
             <div id="gitLinks">
                 <h3>Contributors</h3>
                 <p><b>Robert Doroghazi: </b><a href="https://github.com/robertd90">github.com/RobertD90</a></p>
