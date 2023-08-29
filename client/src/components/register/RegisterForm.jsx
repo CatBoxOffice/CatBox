@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 const RegisterForm = ({ setRegisterInfo }) => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -10,7 +12,7 @@ const RegisterForm = ({ setRegisterInfo }) => {
   const registerHandler = (event) => {
     event.preventDefault();
     password === confirmPassword
-      ? setRegisterInfo({ username, password })
+      ? setRegisterInfo({ username, email, avatar, password })
       : setMessage(`Passwords do not match`);
   };
 
@@ -18,12 +20,32 @@ const RegisterForm = ({ setRegisterInfo }) => {
     <>
       {message ? <p>{message}</p> : null}
       <form onSubmit={registerHandler}>
-        <label>
+      <label>
           Username:{" "}
           <input
             type="text"
             name="username"
             onChange={(event) => setUsername(event.target.value)}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Email:{" "}
+          <input
+            type="text"
+            name="email"
+            onChange={(event) => setEmail(event.target.value)}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Avatar:{" "}
+          <input
+            type="link"
+            name="avatar"
+            onChange={(event) => setAvatar(event.target.value)}
             required
           />
         </label>
