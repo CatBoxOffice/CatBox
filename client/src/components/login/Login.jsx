@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import LoginForm from "./LoginForm";
+import Navbar from "../bars/Navbar";
+import FooterBar from "../bars/FooterBar";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({});
@@ -40,12 +42,14 @@ const Login = () => {
 
   return (
     <>
+      <Navbar />
       {message ? <p>{message}</p> : null}
       {loggedIn ? (
         <button onClick={signOutHandler}>Sign Out</button>
       ) : (
         <LoginForm setLoginInfo={setLoginInfo} />
       )}
+      <FooterBar />
     </>
   );
 };
