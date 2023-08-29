@@ -4,6 +4,9 @@ const jwt = require("jsonwebtoken");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const PORT = 4444;
+const path = require("path");
+
+
 require("dotenv").config();
 
 app.use(require("body-parser").json());
@@ -31,8 +34,9 @@ app.use(async (req, res, next) => {
 });
 
 app.get(`/`, (req, res) => {
-  // link html here later
-  res.send(`welcome to the server. front page under construction`);
+  app.use(express.static(path.join(__dirname, "..", "client/dist")))
+  res.sendFile(path.join(__dirname, "..", "client/dist/index.html"));
+
 });
 
 app.use(`/api`, require(`./api`));

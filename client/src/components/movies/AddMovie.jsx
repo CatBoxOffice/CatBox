@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 const AddMovie = () => {
-  const history = useHistory();
+  // const history = useHistory();
   const [movieData, setMovieData] = useState({
     title: '',
     description: '',
