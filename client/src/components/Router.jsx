@@ -1,6 +1,6 @@
-import React from "react"
+// import React from "react"
 import { Routes, Route } from "react-router-dom";
-import { useState } from 'react'
+// import { useState } from 'react'
 import Home from "./Home";
 import Rubric from "./Rubric";
 import AddReview from "./AddReview";
@@ -14,7 +14,7 @@ import Login from "./login/Login";
 
 
 const Router = () => {
-  const [token, setToken] = useState(null)
+  // const [token, setToken] = useState(null)
 
   return (
     <div id="router">
@@ -30,7 +30,6 @@ const Router = () => {
         <Route path="/rubric" element={<Rubric />} />
         <Route path="/users" element={<Users />} />
       </Routes>
-      <p>hello</p>
     </div>
   );
 };
