@@ -10,7 +10,7 @@ const main = async () => {
       isAdmin: true,
       password: await bcrypt.hash("kevinpw", 10),
       avatar:
-        "https://www.google.com/search?q=dog+picture&tbm=isch&ved=2ahUKEwi2v6ua0PiAAxUgFN4AHZsPB8EQ2-cCegQIABAA&oq=dog+picture&gs_lcp=CgNpbWcQAzIICAAQgAQQsQMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BAgjECc6CwgAEIAEELEDEIMBOgcIABCKBRBDUIY4WMdTYNZXaAJwAHgAgAFniAG8CJIBBDEzLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=_gvpZLbIOaCo-LYPm5-ciAw&rlz=1C5CHFA_enUS1013US1013#imgrc=PpmCvrB3OtU3hM",
+        "https://people.com/thmb/J5i96dLkdqMYBK9koINtQNH8nEk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(399x0:401x2)/hulk-hogan-01-800-0cfd24984e1e45ea9c4c3a0b0e4745b4.jpg",
     },
   });
 
