@@ -1,7 +1,19 @@
+import { useEffect, useState } from "react";
+import RegisterForm from "./RegisterForm";
+
 const Register = () => {
+  const [registerInfo, setRegisterInfo] = useState({})
+  console.log(registerInfo)
+
+  useEffect(() => {
+    
+  }, [registerInfo])
+
   return (
-    <h1>Register</h1>
-  )
-}
+    <>
+      <RegisterForm setRegisterInfo={setRegisterInfo} />
+    </>
+  );
+};
 
 export default Register;
