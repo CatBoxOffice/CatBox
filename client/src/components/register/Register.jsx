@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import RegisterForm from "./RegisterForm";
 
 const Register = () => {
   const [registerInfo, setRegisterInfo] = useState({});
-  console.log(registerInfo);
+  const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const attemptRegister = async () => {
@@ -17,9 +20,12 @@ const Register = () => {
         });
 
         const result = await response.json();
-        console.log(result);
+        
+        localStorage.setItem(`token`, result.token);
+        navigate(`/`);
       } catch (error) {
         console.log(error);
+        setMessage(`Could not register`)
       }
     };
 
@@ -28,6 +34,7 @@ const Register = () => {
 
   return (
     <>
+      {message ? <p>{message}</p> : null}
       <RegisterForm setRegisterInfo={setRegisterInfo} />
     </>
   );

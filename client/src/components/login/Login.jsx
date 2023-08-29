@@ -9,6 +9,7 @@ const Login = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    localStorage.getItem(`token`) ? setLoggedIn(true) : null;
     setMessage("");
     const attemptLogin = async () => {
       try {
