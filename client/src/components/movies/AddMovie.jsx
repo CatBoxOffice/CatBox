@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 
 const AddMovie = () => {
-  const history = useHistory();
   const [movieData, setMovieData] = useState({
     title: '',
     description: '',
@@ -45,8 +43,7 @@ const AddMovie = () => {
           language: '',
         });
 
-        // Redirect to AllMovies after successful submission
-        history.push('./movies/AllMovies');
+    
       } else {
         console.error('Failed to add movie');
       }
