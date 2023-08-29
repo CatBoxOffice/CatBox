@@ -1,6 +1,15 @@
+import { useState } from "react";
+import LoginForm from "./LoginForm"
+
 const Login = () => {
+  const [loginInfo, setLoginInfo] = useState({});
+  
+  console.log(loginInfo)
+
   return (
-    <h1>Login</h1>
+    <>
+      <LoginForm setLoginInfo={setLoginInfo} />
+    </>
   )
 }
 
