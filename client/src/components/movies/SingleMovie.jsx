@@ -23,12 +23,28 @@ const SingleMovie = () => {
   console.log(movie);
 
   return (
-    <>
+    <section>
       <section>
         <img src={movie.poster} id="singleMoviePoster" />
+        <h2>{movie.title}</h2>
+        <p>{movie.rating}</p>
+        <button>Add Review</button>
       </section>
-      <section></section>
-    </>
+
+      <section>
+        <h1>{movie.title}</h1>
+        <section id="movieInfo">
+          <p>Director: {movie.director}</p>
+          <p>Studio: {movie.studio}</p>
+          <p>Language: {movie.language}</p>
+        </section>
+          
+        <section>
+          
+        </section>
+
+      </section>
+    </section>
   );
 };
 
