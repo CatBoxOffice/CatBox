@@ -43,14 +43,12 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
       {message ? <p>{message}</p> : null}
       {loggedIn ? (
         <button onClick={signOutHandler}>Sign Out</button>
       ) : (
         <LoginForm setLoginInfo={setLoginInfo} />
       )}
-      <FooterBar />
     </>
   );
 };
