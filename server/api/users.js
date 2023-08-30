@@ -6,8 +6,7 @@ const prisma = new PrismaClient();
 //Returns all the users
 router.get("/", async (req, res) => {
   try {
-    const users = await prisma.user.findMany({
-    });
+    const users = await prisma.user.findMany({});
     res.send(users);
   } catch (error) {
     res.send(error);
@@ -20,6 +19,13 @@ router.get("/:id", async (req, res) => {
     const user = await prisma.user.findUnique({
       where: {
         id: Number(req.params.id),
+      },
+      include: {
+        reviews: {
+          include: {
+            movie: true
+          }
+        },
       },
     });
     if (!user) {

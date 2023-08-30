@@ -21,7 +21,7 @@ const main = async () => {
       isAdmin: false,
       password: await bcrypt.hash("jamespw", 10),
       avatar:
-        "https://www.google.com/search?q=dog+picture&tbm=isch&ved=2ahUKEwi2v6ua0PiAAxUgFN4AHZsPB8EQ2-cCegQIABAA&oq=dog+picture&gs_lcp=CgNpbWcQAzIICAAQgAQQsQMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BAgjECc6CwgAEIAEELEDEIMBOgcIABCKBRBDUIY4WMdTYNZXaAJwAHgAgAFniAG8CJIBBDEzLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=_gvpZLbIOaCo-LYPm5-ciAw&rlz=1C5CHFA_enUS1013US1013#imgrc=PpmCvrB3OtU3hM",
+        "https://staticg.sportskeeda.com/editor/2023/02/a7227-16752447762662-1920.jpg",
     },
   });
 
@@ -32,7 +32,7 @@ const main = async () => {
       isAdmin: false,
       password: await bcrypt.hash("robertpw", 10),
       avatar:
-        "https://www.google.com/search?q=dog+picture&tbm=isch&ved=2ahUKEwi2v6ua0PiAAxUgFN4AHZsPB8EQ2-cCegQIABAA&oq=dog+picture&gs_lcp=CgNpbWcQAzIICAAQgAQQsQMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BAgjECc6CwgAEIAEELEDEIMBOgcIABCKBRBDUIY4WMdTYNZXaAJwAHgAgAFniAG8CJIBBDEzLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=_gvpZLbIOaCo-LYPm5-ciAw&rlz=1C5CHFA_enUS1013US1013#imgrc=PpmCvrB3OtU3hM",
+        "https://www.the-sun.com/wp-content/uploads/sites/6/2023/06/wrestling-fighter-batista-wwe-smackdown-828738640-1.jpg",
     },
   });
 
@@ -43,7 +43,7 @@ const main = async () => {
       isAdmin: false,
       password: await bcrypt.hash("liupw", 10),
       avatar:
-        "https://www.google.com/search?q=dog+picture&tbm=isch&ved=2ahUKEwi2v6ua0PiAAxUgFN4AHZsPB8EQ2-cCegQIABAA&oq=dog+picture&gs_lcp=CgNpbWcQAzIICAAQgAQQsQMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BAgjECc6CwgAEIAEELEDEIMBOgcIABCKBRBDUIY4WMdTYNZXaAJwAHgAgAFniAG8CJIBBDEzLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=_gvpZLbIOaCo-LYPm5-ciAw&rlz=1C5CHFA_enUS1013US1013#imgrc=PpmCvrB3OtU3hM",
+        "https://static.wikia.nocookie.net/prowrestling/images/a/ad/Wwe_the_rock_png_by_double_a1698_day9ylt-pre_%281%29.png/revision/latest?cb=20190225014047",
     },
   });
 
@@ -60,15 +60,27 @@ const main = async () => {
     },
   });
 
-  const genreRomantic = await prisma.genre.create({
+  const genreRomance = await prisma.genre.create({
     data: {
-      name: "Romantic",
+      name: "Romance",
     },
   });
 
   const genreComedy = await prisma.genre.create({
     data: {
       name: "Comedy",
+    },
+  });
+
+  const genreDrama = await prisma.genre.create({
+    data: {
+      name: "Drama",
+    },
+  });
+
+  const genreSuperHero = await prisma.genre.create({
+    data: {
+      name: "SuperHero",
     },
   });
 
@@ -146,38 +158,66 @@ const main = async () => {
   });
 
   // Movie_Genres:
-  const movie1_genre = await prisma.movies_Genres.create({
+  await prisma.movies_Genres.create({
     data: {
       movieId: movies1.id,
       genreId: genreAction.id,
     },
   });
 
-  const movie5_genre = await prisma.movies_Genres.create({
+  await prisma.movies_Genres.create({
     data: {
-      movieId: movies5.id,
-      genreId: genreAction.id,
+      movieId: movies1.id,
+      genreId: genreDrama.id,
     },
   });
 
-  const movie5_genre2 = await prisma.movies_Genres.create({
+  await prisma.movies_Genres.create({
     data: {
-      movieId: movies5.id,
-      genreId: genreHorror.id,
+      movieId: movies2.id,
+      genreId: genreRomance.id,
     },
   });
 
-  const movie3_genre = await prisma.movies_Genres.create({
+  await prisma.movies_Genres.create({
+    data: {
+      movieId: movies2.id,
+      genreId: genreDrama.id,
+    },
+  });
+
+  await prisma.movies_Genres.create({
     data: {
       movieId: movies3.id,
       genreId: genreComedy.id,
     },
   });
 
-  const movie2_genre = await prisma.movies_Genres.create({
+  await prisma.movies_Genres.create({
     data: {
-      movieId: movies2.id,
-      genreId: genreRomantic.id,
+      movieId: movies3.id,
+      genreId: genreDrama.id,
+    },
+  });
+
+  await prisma.movies_Genres.create({
+    data: {
+      movieId: movies4.id,
+      genreId: genreComedy.id,
+    },
+  });
+
+  await prisma.movies_Genres.create({
+    data: {
+      movieId: movies5.id,
+      genreId: genreAction.id,
+    },
+  });
+
+  await prisma.movies_Genres.create({
+    data: {
+      movieId: movies5.id,
+      genreId: genreSuperHero.id,
     },
   });
 
@@ -242,37 +282,73 @@ const main = async () => {
     },
   });
 
+  const reviews4 = await prisma.review.create({
+    data: {
+      userId: user1.id,
+      movieId: movies1.id,
+      title: "Such a cool movie",
+      content: "LOTS OF PEW PEW AND BANG BANG AND WOOOOOWWW",
+    },
+  });
+
+  const reviews5 = await prisma.review.create({
+    data: {
+      userId: user2.id,
+      movieId: movies1.id,
+      title: "It was Alright",
+      content: "Not much of a gun fan but my boyfriend made me watch it",
+    },
+  });
+
+  const reviews6 = await prisma.review.create({
+    data: {
+      userId: user3.id,
+      movieId: movies5.id,
+      title: "Never seen something like this before!",
+      content: "Who thought the aliens would be so cool???",
+    },
+  });
+
+  const reviews7 = await prisma.review.create({
+    data: {
+      userId: user3.id,
+      movieId: movies4.id,
+      title: "It was so emotional",
+      content: "Ima go write in my notebook after this",
+    },
+  });
+
   // REVIEW_TAGS:
 
-  const review1_tags = await prisma.review_Tags.create({
+  await prisma.review_Tags.create({
     data: {
       reviewId: reviews1.id,
       tagId: tag1.id,
     },
   });
 
-  const review2_tags = await prisma.review_Tags.create({
+  await prisma.review_Tags.create({
     data: {
       reviewId: reviews2.id,
       tagId: tag2.id,
     },
   });
 
-  const review3_tags = await prisma.review_Tags.create({
+  await prisma.review_Tags.create({
     data: {
       reviewId: reviews3.id,
       tagId: tag3.id,
     },
   });
 
-  const review4_tags = await prisma.review_Tags.create({
+  await prisma.review_Tags.create({
     data: {
       reviewId: reviews2.id,
       tagId: tag4.id,
     },
   });
 
-  const review5_tags = await prisma.review_Tags.create({
+  await prisma.review_Tags.create({
     data: {
       reviewId: reviews3.id,
       tagId: tag5.id,

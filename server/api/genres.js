@@ -6,7 +6,15 @@ const prisma = new PrismaClient();
 // Get all Genres
 router.get(`/`, async (req, res) => {
   try {
-    const allGenres = await prisma.genre.findMany();
+    const allGenres = await prisma.genre.findMany({
+      include: {
+        Movies_Genres: {
+          select: {
+            movie: true,
+          },
+        },
+      },
+    });
 
     res.send(allGenres);
   } catch (error) {
@@ -20,6 +28,13 @@ router.get(`/:id`, async (req, res) => {
     const genre = await prisma.genre.findUnique({
       where: {
         id: Number(req.params.id),
+      },
+      include: {
+        Movies_Genres: {
+          select: {
+            movie: true,
+          },
+        },
       },
     });
     if (!genre) {
