@@ -41,7 +41,7 @@ const Profile = () => {
       <li key={review.id}>
         <h3>{review.movie.title}</h3>
         <p>{review.content}</p>
-        <p>Movie ID: {review.movieId}</p>
+        
       </li>
     ))}
   </ul>
