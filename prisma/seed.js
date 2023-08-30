@@ -43,7 +43,7 @@ const main = async () => {
       isAdmin: false,
       password: await bcrypt.hash("liupw", 10),
       avatar:
-        "https://static.wikia.nocookie.net/prowrestling/images/a/ad/Wwe_the_rock_png_by_double_a1698_day9ylt-pre_%281%29.png/revision/latest?cb=20190225014047",
+        "https://media.istockphoto.com/id/1288973455/photo/stone-pebble-gray.jpg?s=612x612&w=0&k=20&c=Vw4HIdybWHjFKNp83p7ii_P571d9488_b-GXwBwmSbU=",
     },
   });
 
