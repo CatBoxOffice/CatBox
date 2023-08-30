@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const SingleMovie = () => {
   const [movie, setMovie] = useState({});
+  const navigate = useNavigate();
   const { movieId } = useParams();
 
   useEffect(() => {
     const fetchMovie = async (id) => {
       try {
         const response = await fetch(`/api/movies/${id}`);
-        const result = await response.json();
+        const movie = await response.json();
 
-        setMovie(result);
+        setMovie(movie);
       } catch (error) {
         console.log(error);
       }
@@ -20,7 +21,9 @@ const SingleMovie = () => {
     fetchMovie(movieId);
   }, []);
 
-  console.log(movie);
+  const clickHandler = () => {
+    navigate(`/add-review/${movie.id}`);
+  }
 
   return (
     <section>
@@ -28,7 +31,7 @@ const SingleMovie = () => {
         <img src={movie.poster} id="singleMoviePoster" />
         <h2>{movie.title}</h2>
         <p>{movie.rating}</p>
-        <button>Add Review</button>
+        <button onClick={clickHandler}>Add Review</button>
       </section>
 
       <section>
@@ -38,11 +41,20 @@ const SingleMovie = () => {
           <p>Studio: {movie.studio}</p>
           <p>Language: {movie.language}</p>
         </section>
-          
-        <section>
-          
-        </section>
 
+        <section id="reviewsSection">
+          {movie.reviews ? (
+            <div>
+              {movie.reviews.map((review) => (
+                <section key={review.id}>
+                  {console.log(`REVIEW`, review)}
+                  <h3>{review.title}</h3>
+                  <p>{review.content}</p>
+                </section>
+              ))}
+            </div>
+          ) : null}
+        </section>
       </section>
     </section>
   );

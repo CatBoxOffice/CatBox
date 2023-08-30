@@ -25,7 +25,7 @@ const Router = () => {
         <Route path="/movies" element={<AllMovies />} />
         <Route path="/movies/:movieId" element={<SingleMovie />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/add-review" element={<AddReview />} />
+        <Route path="/add-review/:movieId" element={<AddReview />} />
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/rubric" element={<Rubric />} />
         <Route path="/users" element={<Users />} />
