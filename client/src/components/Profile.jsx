@@ -19,13 +19,13 @@ const Profile = () => {
       console.error("Error fetching user data");
     }
   };
-  
-console.log(userData.avatar)
+
+  console.log(userData.avatar)
   return (
     <div>
       <h1>{userData.username}'s Profile</h1>
       <img src={userData.avatar} alt="ProfilePic" />
-    
+
 
       <div>
         <h2>{userData.username}'s Information</h2>
