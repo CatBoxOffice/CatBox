@@ -5,7 +5,19 @@ const prisma = new PrismaClient();
 
 router.get(`/`, async (req, res) => {
   try {
-    const allMovies = await prisma.movie.findMany();
+    const allMovies = await prisma.movie.findMany({
+      include: {
+        Movies_Genres: {
+          select: {
+            genres: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
+      },
+    });
 
     res.send(allMovies);
   } catch (error) {
@@ -18,6 +30,18 @@ router.get(`/:id`, async (req, res) => {
     const movie = await prisma.movie.findUnique({
       where: {
         id: Number(req.params.id),
+      },
+      include: {
+        Movies_Genres: {
+          select: {
+            genres: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
+        reviews: true,
       },
     });
 

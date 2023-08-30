@@ -6,7 +6,25 @@ const prisma = new PrismaClient();
 //Returns all reviews
 router.get("/", async (req, res) => {
   try {
-    const reviews = await prisma.review.findMany({});
+    const reviews = await prisma.review.findMany({
+      include: {
+        user: {
+          select: {
+            username: true,
+          },
+        },
+        movie: true,
+        Review_Tags: {
+          select: {
+            tags: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
+      },
+    });
     res.send(reviews);
   } catch (error) {
     res.send(error);
@@ -19,6 +37,23 @@ router.get("/:id", async (req, res) => {
     const review = await prisma.review.findUnique({
       where: {
         id: Number(req.params.id),
+      },
+      include: {
+        user: {
+          select: {
+            username: true,
+          },
+        },
+        movie: true,
+        Review_Tags: {
+          select: {
+            tags: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
       },
     });
     if (!review) {
