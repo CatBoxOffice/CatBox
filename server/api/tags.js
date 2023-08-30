@@ -5,7 +5,15 @@ const prisma = new PrismaClient();
 
 router.get(`/`, async (req, res) => {
   try {
-    const allTags = await prisma.tag.findMany();
+    const allTags = await prisma.tag.findMany({
+      include: {
+        Review_Tags: {
+          select: {
+            review: true,
+          },
+        },
+      },
+    });
 
     res.send(allTags);
   } catch (error) {
@@ -18,6 +26,13 @@ router.get(`/:id`, async (req, res) => {
     const tag = await prisma.tag.findUnique({
       where: {
         id: Number(req.params.id),
+      },
+      include: {
+        Review_Tags: {
+          select: {
+            review: true,
+          },
+        },
       },
     });
 
