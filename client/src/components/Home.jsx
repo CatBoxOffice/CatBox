@@ -40,7 +40,7 @@ const Home = () => {
             <img
               src={movie.poster}
               alt={`Thumbnail for ${movie.title}`}
-              style={{ width: "270px", height: "345px" }}
+              style={{ width: "240px", height: "345px" }}
             />
 
           </div>
