@@ -16,6 +16,17 @@ const Home = () => {
       const response = await fetch(`/api/movies/`);
       console.log(response)
       const movieData = await response.json();
+
+      movieData.sort((movie1, movie2) => {
+        if (movie1.year < movie2.year) {
+          return 1;
+        } else if (movie1.year > movie2.year) {
+          return -1;
+          } else {
+            return 0;
+          }
+          });
+
       setMovies(movieData);
       console.log("Fetched movie data:", movieData)
     } catch (error) {
