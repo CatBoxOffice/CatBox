@@ -1,3 +1,16 @@
 #singleMoviePoster {
   width: 400px;
 }
+
+.userAvatar {
+  height: 200px;
+}
+
+.flex {
+  display: flex;
+}
+
+#userPage {
+  flex-direction: column;
+  flex-wrap: wrap;
+}
