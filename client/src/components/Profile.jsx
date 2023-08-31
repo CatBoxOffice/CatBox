@@ -1,11 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [userData, setUserData] = useState({});
   const [userReviews, setUserReviews] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchUserData(id);
@@ -20,6 +21,25 @@ const Profile = () => {
       setUserReviews(data.reviews);
     } catch (error) {
       console.error("Error fetching user data");
+    }
+  };
+
+  const handleEditReview = (reviewId) => {
+    navigate(`api/users/${id}`);
+  };
+
+  const handleDeleteReview = async (reviewId) => {
+    try {
+      const response = await fetch(`/api/users/${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        setUserReviews((prevReviews) =>
+          prevReviews.filter((review) => review.id !== reviewId)
+        );
+      }
+    } catch (error) {
+      console.error("Error deleting review", error);
     }
   };
 
@@ -41,7 +61,8 @@ const Profile = () => {
       <li key={review.id}>
         <h3>{review.movie.title}</h3>
         <p>{review.content}</p>
-        
+        <button onClick={() => handleEditReview(review.id)}>Edit</button>
+        <button onClick={() => handleDeleteReview(review.id)}>Delete</button>
       </li>
     ))}
   </ul>
