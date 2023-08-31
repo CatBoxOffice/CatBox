@@ -8,7 +8,6 @@ const Profile = () => {
   const [changesHappened, setChangesHappened] = useState(false);
   const [wantUpdate, setWantUpdate] = useState(false);
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const token = localStorage.getItem(`token`);
   const tokenArr = token.split(`.`)
