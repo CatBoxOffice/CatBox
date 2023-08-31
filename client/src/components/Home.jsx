@@ -8,7 +8,6 @@ const Home = () => {
   useEffect(() => {
     fetchMovies(1)
   }, []);
-
   // THE FETC PART
 
   const fetchMovies = async () => {
@@ -33,7 +32,6 @@ const Home = () => {
       console.error(`Error fetching movies:', error`);
     }
   };
-
   // This part is needed for the Navigate button ( TO ADD REVIEW!)
 
   const navigate = useNavigate();
