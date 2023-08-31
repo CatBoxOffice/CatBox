@@ -11,6 +11,7 @@ import Profile from "./Profile";
 import Users from "./Users";
 import SingleMovie from "./movies/SingleMovie";
 import Login from "./login/Login";
+import SearchResults from "./bars/SearchResults";
 
 
 const Router = () => {
@@ -29,6 +30,8 @@ const Router = () => {
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/rubric" element={<Rubric />} />
         <Route path="/users" element={<Users />} />
+        {/*this is a new line */}
+        <Route path="/search" element={<SearchResults />} />
       </Routes>
     </div>
   );

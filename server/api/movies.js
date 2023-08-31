@@ -3,6 +3,27 @@ const { requireAdmin } = require("./utils");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
+//This is the new router:
+router.get("/searchByName", async (req, res) => {
+  const searchQuery = req.query.q;
+
+  try {
+    const searchResults = await prisma.movie.findMany({
+      where: {
+        title: {
+          contains: searchQuery,
+          mode: "insensitive", // Case-insensitive search
+        },
+      },
+    });
+
+    res.send(searchResults);
+  } catch (error) {
+    res.status(500).send({ message: "Error searching movies", error });
+  }
+});
+
+
 router.get(`/`, async (req, res) => {
   try {
     const allMovies = await prisma.movie.findMany({
@@ -91,6 +112,25 @@ router.delete(`/:id`, requireAdmin, async (req, res) => {
     res.send({ message: `Movie deleted`, movie: deleteMovie });
   } catch (error) {
     res.send({ message: `Error deleting movie`, error });
+  }
+});
+
+// New route for movie search
+router.get(`/search`, async (req, res) => {
+  const searchQuery = req.query.q;
+  try {
+    const searchResults = await prisma.movie.findMany({
+      where: {
+        title: {
+          contains: searchQuery,
+          mode: "insensitive", // Case-insensitive search
+        },
+      },
+    });
+
+    res.send(searchResults);
+  } catch (error) {
+    res.send({ message: `Error searching movies`, error });
   }
 });
 
