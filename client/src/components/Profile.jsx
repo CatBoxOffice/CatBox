@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [userData, setUserData] = useState({});
@@ -8,6 +8,7 @@ const Profile = () => {
   const [changesHappened, setChangesHappened] = useState(false);
   const [wantUpdate, setWantUpdate] = useState(false);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const token = localStorage.getItem(`token`);
   const tokenArr = token.split(`.`)
@@ -65,6 +66,7 @@ const Profile = () => {
       {/* Movie Reviews */}
       <div>
         <h2>{userData.username}'s Reviews:</h2>
+
         {!wantUpdate && Number(id) === tokenId ? (
           <button onClick={() => setWantUpdate(true)}>Update Reviews</button>
         ) : null}

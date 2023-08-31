@@ -47,6 +47,63 @@ const main = async () => {
     },
   });
 
+  // New Users:
+
+  const user6 = await prisma.user.create({
+    data: {
+      username: "MrMovieMan",
+      email: "mrmovieman@gmail.com",
+      isAdmin: false,
+      password: await bcrypt.hash("liupw", 10),
+      avatar:
+        "https://hc.edu/news-and-events/wp-content/uploads/sites/12/2017/08/MR.MOVIEMAN-1-800x400.jpg",
+    },
+  });
+
+  const user7 = await prisma.user.create({
+    data: {
+      username: "DanTheMan23",
+      email: "dantheman23@gmail.com",
+      isAdmin: false,
+      password: await bcrypt.hash("liupw", 10),
+      avatar:
+        "https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/lions/mtk8ljbpqqjaqxyxthgc",
+    },
+  });
+
+  const user8 = await prisma.user.create({
+    data: {
+      username: "GardenGal69",
+      email: "gardengal@gmail.com",
+      isAdmin: false,
+      password: await bcrypt.hash("liupw", 10),
+      avatar:
+        "https://yt3.googleusercontent.com/s5cJewuN6fyNj-vfKMxgFhl9AiRGz66owu3mcYWcJ1CfX0VN5cXOeAQcj2IApkoxPYIAfLI__Q=s900-c-k-c0x00ffffff-no-rj",
+    },
+  });
+
+  const user9 = await prisma.user.create({
+    data: {
+      username: "LaFlamaBlanca",
+      email: "kennypowers@gmail.com",
+      isAdmin: false,
+      password: await bcrypt.hash("liupw", 10),
+      avatar:
+        "https://www.bradleyscout.com/wp-content/uploads/2023/04/cccc2154da115c27a01d88808e961f7a.jpeg",
+    },
+  });
+
+  const user10 = await prisma.user.create({
+    data: {
+      username: "ProcrastinatorPete",
+      email: "pete@officejob.com",
+      isAdmin: false,
+      password: await bcrypt.hash("liupw", 10),
+      avatar:
+        "https://st.depositphotos.com/1011643/3244/i/450/depositphotos_32449847-office-worker-looking-at-the-camera.jpg",
+    },
+  });
+
   //GENRES:
   const genreHorror = await prisma.genre.create({
     data: {
@@ -153,6 +210,83 @@ const main = async () => {
       rating: "PG-13",
       director: "Anthony Russo",
       studio: "Marvel Studios",
+      language: "English",
+    },
+  });
+
+  // List of Recent Films:
+
+  const movies6 = await prisma.movie.create({
+    data: {
+      title: "Oppenheimer",
+      description:
+        "The story of American scientist, J. Robert Oppenheimer, and his role in the development of the atomic bomb.",
+      poster:
+        "https://m.media-amazon.com/images/I/71xDtUSyAKL._AC_SL1500_.jpg",
+      year: 2023,
+      rating: "R",
+      director: "Christopher Nolan",
+      studio: "Universal/Syncopy",
+      language: "English",
+    },
+  });
+
+  const movies7 = await prisma.movie.create({
+    data: {
+      title: "Barbie",
+      description:
+        "Barbie suffers a crisis that leads her to question her world and her existence.",
+      poster:
+        "https://m.media-amazon.com/images/I/71BgdzmFDAL._AC_SL1500_.jpg",
+      year: 2023,
+      rating: "PG-13",
+      director: "Greta Gerwig",
+      studio: "Warner Bros.",
+      language: "English",
+    },
+  });
+
+  const movies8 = await prisma.movie.create({
+    data: {
+      title: "Blue Beetle",
+      description:
+        "An alien scarab chooses Jaime Reyes to be its symbiotic host, forever changing his destiny as he becomes the superhero known as Blue Beetle.",
+      poster:
+        "https://www.movieposters.com/cdn/shop/files/blue-beetle_hyapde37_480x.progressive.jpg?v=1688499635",
+      year: 2023,
+      rating: "PG-13",
+      director: "Angel Manuel Soto",
+      studio: "Warner Bros.",
+      language: "English",
+    },
+  });
+
+  const movies9 = await prisma.movie.create({
+    data: {
+      title: "They Live 35th Anniversary",
+      description:
+        "They influence our decisions without us knowing it. They numb our senses without us feeling it. They control our lives without us realizing it. They live. Rerelease of the 1988 cult classic.",
+      poster:
+        "https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_465,q_auto,w_310/v1687746802/amc-cdn/production/2/movies/73900/73860/PosterDynamic/154070.jpg",
+      year: 2023,
+      rating: "R",
+      director: "John Carpenter",
+      studio: "Universal/Alive Films",
+      language: "English",
+    },
+  });
+
+  const movies10 = await prisma.movie.create({
+    data: {
+      title: "Mission: Impossible - Dead Reckoning Part One",
+      description:
+        "Ethan Hunt and his IMF team must track down a dangerous weapon before it falls into the wrong hands.",
+      poster:
+        "https://www.movieposters.com/cdn/shop/files/mission_impossible__dead_reckoning_part_one_ver2_480x.progressive.jpg?v=1686066143",
+      year: 2023,
+      rating: "PG-13",
+      director: "Christopher McQuarrie",
+      studio: "Paramount Pictures",
       language: "English",
     },
   });
@@ -315,6 +449,98 @@ const main = async () => {
       movieId: movies4.id,
       title: "It was so emotional",
       content: "Ima go write in my notebook after this",
+    },
+  });
+
+  // New Reviews:
+
+  const reviews8 = await prisma.review.create({
+    data: {
+      userId: user10.id,
+      movieId: movies6.id,
+      title: "Oppen-hellyeah",
+      content: "Chris Nolan is so sick a directing, bro. No cap frfr",
+    },
+  });
+
+  const reviews9 = await prisma.review.create({
+    data: {
+      userId: user10.id,
+      movieId: movies7.id,
+      title: "Barbie's tight, bro",
+      content: "Margo Robbie's a total smoke show, bro. No cap frfr. Movie's a little too pink though, bro frfr.",
+    },
+  });
+
+  const reviews10 = await prisma.review.create({
+    data: {
+      userId: user8.id,
+      movieId: movies6.id,
+      title: "Not for me...",
+      content: "All that nuclear radiation must be terrible for everyone's plants.",
+    },
+  });
+
+  const reviews11 = await prisma.review.create({
+    data: {
+      userId: user8.id,
+      movieId: movies7.id,
+      title: "Love love love",
+      content: "Loved this movie. Reminded me off all my Barbie dolls I used to have.",
+    },
+  });
+
+  const reviews12 = await prisma.review.create({
+    data: {
+      userId: user9.id,
+      movieId: movies8.id,
+      title: "Pretty dope flick",
+      content: "Took Stevie to see this movie. He paid, of course. Entertaining movie",
+    },
+  });
+
+  const reviews13 = await prisma.review.create({
+    data: {
+      userId: user9.id,
+      movieId: movies9.id,
+      title: "Better than ever!",
+      content: "John Carpenter's movies are always awesome...especially on the big screen!",
+    },
+  });
+
+  const reviews14 = await prisma.review.create({
+    data: {
+      userId: user7.id,
+      movieId: movies10.id,
+      title: "Best action franchise",
+      content: "Tom Cruise is the man. Goes hard with the stunts and looks great running.",
+    },
+  });
+
+  const reviews15 = await prisma.review.create({
+    data: {
+      userId: user7.id,
+      movieId: movies8.id,
+      title: "Horrible waste of time",
+      content: "I would have rather watched Mission Impossible again...I blame my nephew, Gabriel.",
+    },
+  });
+
+  const reviews16 = await prisma.review.create({
+    data: {
+      userId: user6.id,
+      movieId: movies10.id,
+      title: "Not the best M.I. movie but still good",
+      content: "I love seeing this franchise grow but would have liked more razzle dazzle.",
+    },
+  });
+
+  const reviews17 = await prisma.review.create({
+    data: {
+      userId: user6.id,
+      movieId: movies9.id,
+      title: "John Carpenter is the best",
+      content: "Happy they did another theatrical run of this cult masterpiece. Wore out my VHS copy 13 years ago.",
     },
   });
 
