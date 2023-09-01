@@ -23,8 +23,8 @@ router.get("/:id", async (req, res) => {
       include: {
         reviews: {
           include: {
-            movie: true
-          }
+            movie: true,
+          },
         },
       },
     });
@@ -60,16 +60,36 @@ router.put("/:id", async (req, res) => {
 //Deletes a user
 router.delete("/:id", async (req, res) => {
   try {
-    const user = await prisma.user.delete({
+    const deleteReviewTags = prisma.review_Tags.deleteMany({
+      where: {
+        review: {
+          userId: Number(req.params.id),
+        },
+      },
+    });
+
+    const deleteReviews = prisma.review.deleteMany({
+      where: {
+        userId: Number(req.params.id),
+      },
+    });
+
+    const deleteUser = prisma.user.delete({
       where: {
         id: Number(req.params.id),
       },
     });
 
-    if (!user) {
+    const transaction = await prisma.$transaction([
+      deleteReviewTags,
+      deleteReviews,
+      deleteUser,
+    ]);
+
+    if (!transaction) {
       res.send({ error: true, message: "User Not Found" });
     } else {
-      res.send(user);
+      res.send({ error: false, message: "User Deleted" });
     }
   } catch (error) {
     res.send(error);
