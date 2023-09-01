@@ -1,0 +1,61 @@
+.search-results-container {
+    margin: 20px;
+}
+
+/* Movie list styles */
+.movie-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Movie item styles */
+.movie-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Movie image styles */
+.movie-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Movie details styles */
+.movie-details {
+    text-align: center;
+}
+
+/* Movie title styles */
+.movie-details h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+/* Movie description styles */
+.movie-details p {
+    margin: 10px 0;
+}
+
+/* Add review button styles */
+.add-review-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-review-button:hover {
+    background-color: #0056b3;
+}

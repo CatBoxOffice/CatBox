@@ -1,0 +1,19 @@
+/* Home.css */
+
+.film-box {
+    display: flex;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.film-thumbnail img {
+    width: 240px;
+    height: 345px;
+    object-fit: cover;
+}
+
+.film-details {
+    margin-left: 20px;
+}

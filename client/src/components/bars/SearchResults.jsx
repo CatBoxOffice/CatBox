@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import "./SearchResults.css";
+
+
 
 const SearchResults = () => {
     const location = useLocation();
@@ -12,9 +15,9 @@ const SearchResults = () => {
         const fetchSearchResults = async () => {
             try {
                 const response = await fetch(`/api/movies/searchByName?q=${searchQuery}`);
-                console.log(searchQuery)
+                // console.log(searchQuery)
                 const data = await response.json();
-                console.log(data)
+                // console.log(data)
                 setSearchResults(data);
             } catch (error) {
                 console.error("Error fetching search results:", error);
@@ -24,21 +27,26 @@ const SearchResults = () => {
         fetchSearchResults();
     }, [searchQuery]);
 
+
     return (
-        <div>
+        <div className="search-results-container">
             <h2>Search Results for "{searchQuery}"</h2>
-            <ul>
+            <ul className="movie-list">
                 {searchResults.map((movie) => (
-                    <li key={movie.id}>
-                        <img src={movie.poster} alt={movie.title} />
-                        <h3>{movie.title}</h3>
-                        <p>{movie.description}</p>
-                        {/* Add more details about the movie */}
+                    <li key={movie.id} className="movie-item">
+                        <img src={movie.poster} alt={movie.title} className="movie-image" />
+                        <div className="movie-details">
+                            <h3>{movie.title}</h3>
+                            <p>{movie.description}</p>
+                            <button className="add-review-button">Add Review</button>
+                        </div>
                     </li>
                 ))}
             </ul>
         </div>
     );
 }
+
+
 
 export default SearchResults;

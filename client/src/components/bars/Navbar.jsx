@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function NavBar() {
-  const [searchQuery, setSearchQuery] = useState(""); // State to hold the search query
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate(); // Hook for navigation
 
   const handleSearchSubmit = (event) => {
@@ -16,6 +16,7 @@ function NavBar() {
 
   return (
     <div id="navbar">
+
       {/* Links to various pages */}
       <Link to="/"><img src="https://github.com/CatBoxOffice/CatBox/blob/main/client/src/components/images/cinema_cat.png?raw=true" width="50"></img></Link>
       <Link to="/movies">All Movies</Link>
@@ -25,8 +26,8 @@ function NavBar() {
       {/* Conditional links based on user login status */}
       <Link to="/login">Log In</Link>
       <Link to="/profile">Profile Page</Link>
+
 <br></br><br></br>
-      {/* Search bar */}
       <form onSubmit={handleSearchSubmit}>
         <input
           type="text"
