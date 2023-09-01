@@ -16,8 +16,9 @@ function NavBar() {
 
   return (
     <div id="navbar">
-      {/* Links to various pages are here*/}
-      <Link to="/">Home</Link>
+
+      {/* Links to various pages */}
+      <Link to="/"><img src="https://github.com/CatBoxOffice/CatBox/blob/main/client/src/components/images/cinema_cat.png?raw=true" width="50"></img></Link>
       <Link to="/movies">All Movies</Link>
       <Link to="/rubric">Rating Rubric</Link>
       {/* Links visible to admins only */}
@@ -26,7 +27,7 @@ function NavBar() {
       <Link to="/login">Log In</Link>
       <Link to="/profile">Profile Page</Link>
 
-      {/* Search bar modifications are here...*/}
+<br></br><br></br>
       <form onSubmit={handleSearchSubmit}>
         <input
           type="text"

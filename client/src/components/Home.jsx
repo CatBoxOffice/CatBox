@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
@@ -47,13 +48,17 @@ const Home = () => {
           </div>
           <div className="film-details">
             <h2>{movie.title}</h2>
+            <p>Genre: {movie.Movies_Genres.map((genre) => (
+              <>{genre.genres.name} </>
+            ))}</p>
             <p>{movie.description}</p>
+            <p>Grade:</p>
             <p>Director: {movie.director}</p>
             <p>Year: {movie.year}</p>
-            <p>Rating: {movie.rating}</p>
+            <p>Rated {movie.rating}</p>
             <p>Studio: {movie.studio}</p>
             <p>Language: {movie.language}</p>
-            <button onClick={() => navigate(`/add-review/`)}>ADD REVIEW</button>
+            <button onClick={() => navigate(`/add-review/${movie.id}`)}>ADD REVIEW</button>
           </div>
         </div>
       ))}
