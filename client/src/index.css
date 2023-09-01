@@ -14,3 +14,62 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
+
+
+
+/* Navbar styles */
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  /* Background color for the navbar */
+  padding: 10px 20px;
+  /* Adjust padding as needed */
+}
+
+/* Logo styles */
+#navbar h2 {
+  margin: 0;
+  font-size: 24px;
+  text-decoration: none;
+  color: #333;
+  /* Text color for the logo */
+
+}
+
+/* Search bar styles */
+#navbar form {
+  display: flex;
+  align-items: center;
+}
+
+#navbar input[type="text"] {
+  padding: 5px;
+  margin-right: 10px;
+
+}
+
+#navbar button[type="submit"] {
+  padding: 5px 10px;
+  background-color: lightblue;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Navigation links styles */
+#navbar a {
+  text-decoration: none;
+  color: #333;
+  /* Text color for the navigation links */
+  margin-left: 20px;
+
+
+}
+
+
+#navbar a.active {
+  color: #007bff;
+
+}

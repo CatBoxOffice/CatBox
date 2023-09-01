@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Home.css";
 
-
-// This is where the actual Home code starts:
 const Home = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    fetchMovies(1)
+    fetchMovies();
   }, []);
-  // THE FETC PART
 
   const fetchMovies = async () => {
     try {
       const response = await fetch(`/api/movies/`);
-      console.log(response)
       const movieData = await response.json();
 
       movieData.sort((movie1, movie2) => {
@@ -21,22 +18,18 @@ const Home = () => {
           return 1;
         } else if (movie1.year > movie2.year) {
           return -1;
-          } else {
-            return 0;
-          }
-          });
+        } else {
+          return 0;
+        }
+      });
 
       setMovies(movieData);
-      console.log("Fetched movie data:", movieData)
     } catch (error) {
-      console.error(`Error fetching movies:', error`);
+      console.error(`Error fetching movies:`, error);
     }
   };
-  // This part is needed for the Navigate button ( TO ADD REVIEW!)
 
   const navigate = useNavigate();
-
-  //The return has the MAP function in it and the details as well for the movies with the ADD REVIEW button
 
   return (
     <div>
@@ -51,7 +44,6 @@ const Home = () => {
               alt={`Thumbnail for ${movie.title}`}
               style={{ width: "240px", height: "345px" }}
             />
-
           </div>
           <div className="film-details">
             <h2>{movie.title}</h2>
@@ -65,11 +57,9 @@ const Home = () => {
           </div>
         </div>
       ))}
-    </div >
+    </div>
   );
 };
-
-//Returning the Home function 
 
 export default Home;
 
