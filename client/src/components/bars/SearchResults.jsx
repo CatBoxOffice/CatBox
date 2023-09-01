@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./SearchResults.css";
 
+
+
 const SearchResults = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -13,7 +15,9 @@ const SearchResults = () => {
         const fetchSearchResults = async () => {
             try {
                 const response = await fetch(`/api/movies/searchByName?q=${searchQuery}`);
+                // console.log(searchQuery)
                 const data = await response.json();
+                // console.log(data)
                 setSearchResults(data);
             } catch (error) {
                 console.error("Error fetching search results:", error);
@@ -22,6 +26,7 @@ const SearchResults = () => {
 
         fetchSearchResults();
     }, [searchQuery]);
+
 
     return (
         <div className="search-results-container">
@@ -41,5 +46,7 @@ const SearchResults = () => {
         </div>
     );
 }
+
+
 
 export default SearchResults;
