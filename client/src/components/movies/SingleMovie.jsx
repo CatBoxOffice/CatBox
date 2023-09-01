@@ -30,6 +30,9 @@ const SingleMovie = () => {
       <section>
         <img src={movie.poster} id="singleMoviePoster" />
         <h2>{movie.title}</h2>
+        <p>Genre: {movie.Movies_Genres.map((genre) => (
+              <>{genre.genres.name} </>
+            ))}</p>
         <p>{movie.rating}</p>
         <button onClick={clickHandler}>Add Review</button>
       </section>
