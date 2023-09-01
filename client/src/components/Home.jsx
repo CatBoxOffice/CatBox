@@ -34,7 +34,10 @@ const Home = () => {
         }
       });
 
-      setMovies(movieData);
+      // Filter movies with year 2023
+      const filteredMovies = movieData.filter((movie) => movie.year === 2023);
+
+      setMovies(filteredMovies);
     } catch (error) {
       console.error(`Error fetching movies:`, error);
     }
@@ -58,7 +61,7 @@ const Home = () => {
     <div>
       {token ? <h1>Welcome {userData.username}!</h1> : <h1>Welcome</h1>}
       
-      <h3>LIST OF RECENTLY RELEASED FILMS</h3>
+      <h3>RECENT RELEASES</h3>
       {movies.map((movie) => (
         <div className="film-box" key={movie.id}>
           <div className="film-thumbnail">
