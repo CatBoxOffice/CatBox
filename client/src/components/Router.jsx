@@ -1,6 +1,4 @@
-// import React from "react"
 import { Routes, Route } from "react-router-dom";
-// import { useState } from 'react'
 import Home from "./Home";
 import Rubric from "./Rubric";
 import AddReview from "./AddReview";
@@ -13,15 +11,16 @@ import SingleMovie from "./movies/SingleMovie";
 import Login from "./login/Login";
 import SearchResults from "./bars/SearchResults";
 
-
-const Router = () => {
-  // const [token, setToken] = useState(null)
+const Router = ({ setLoggedIn }) => {
 
   return (
     <div id="router">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login setLoggedIn={setLoggedIn} />}
+        />
         <Route path="/add-movie" element={<AddMovie />} />
         <Route path="/movies" element={<AllMovies />} />
         <Route path="/movies/:movieId" element={<SingleMovie />} />

@@ -1,9 +1,45 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ loggedIn, setLoggedIn }) {
+  const [userData, setUserData] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [userId, setUserId] = useState(null);
+
+  console.log(isAdmin);
+
   const navigate = useNavigate(); // Hook for navigation
+
+  useEffect(() => {
+    const token = localStorage.getItem(`token`);
+
+    if (token) {
+      const tokenArr = token.split(`.`);
+      const { id } = JSON.parse(atob(tokenArr[1]));
+      setUserId(id);
+      fetchUserData(id);
+    }
+  }, [loggedIn]);
+
+  const fetchUserData = async (id) => {
+    try {
+      const response = await fetch(`/api/users/${id}`);
+      const data = await response.json();
+      setUserData(data);
+      setIsAdmin(data.isAdmin);
+    } catch (error) {
+      console.error("Error fetching user data");
+    }
+  };
+
+  const signOutHandler = () => {
+    localStorage.removeItem(`token`);
+    setUserId(null);
+    setLoggedIn(false);
+    setIsAdmin(false);
+    navigate(`/`);
+  };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -16,18 +52,20 @@ function NavBar() {
 
   return (
     <div id="navbar">
-
       {/* Links to various pages */}
-      <Link to="/"><img src="https://github.com/CatBoxOffice/CatBox/blob/main/client/src/components/images/cinema_cat.png?raw=true" width="50"></img></Link>
-      <Link to="/movies">All Movies</Link>
-      <Link to="/rubric">Rating Rubric</Link>
+      <Link to={"/"}>
+        <img
+          src="https://github.com/CatBoxOffice/CatBox/blob/main/client/src/components/images/cinema_cat.png?raw=true"
+          width="50"
+        ></img>
+      </Link>
+      <Link to={"/movies"}>All Movies</Link>
+      <Link to={"/rubric"}>Grading Rubric</Link>
       {/* Links visible to admins only */}
-      <Link to="/users">All Users</Link>
-      {/* Conditional links based on user login status */}
-      <Link to="/login">Log In</Link>
-      <Link to="/profile">Profile Page</Link>
+      {isAdmin ? <Link to={"/users"}>All Users</Link> : null}
 
-<br></br><br></br>
+      <br></br>
+      <br></br>
       <form onSubmit={handleSearchSubmit}>
         <input
           type="text"
@@ -37,6 +75,20 @@ function NavBar() {
         />
         <button type="submit">Search</button>
       </form>
+      {userId ? (
+        <section className="flex" id="navbarProfile">
+          <button onClick={signOutHandler} style={{ width: 50, fontSize: 8 }}>
+            Sign Out
+          </button>
+          <img
+            src={userData.avatar}
+            id="navbarAvatar"
+            onClick={() => navigate(`/profile/${userId}`)}
+          />
+        </section>
+      ) : (
+        <Link to={"/login"}>Log In</Link>
+      )}
     </div>
   );
 }
