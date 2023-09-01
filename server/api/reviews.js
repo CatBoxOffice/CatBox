@@ -101,16 +101,27 @@ router.put("/:id", requireUser, async (req, res) => {
 //Deletes a review
 router.delete("/:id", requireUser, async (req, res) => {
   try {
-    const review = await prisma.review.delete({
+    const deleteReviewTags = prisma.review_Tags.deleteMany({
+      where: {
+        reviewId: Number(req.params.id),
+      },
+    });
+
+    const deleteReview = prisma.review.delete({
       where: {
         id: Number(req.params.id),
       },
     });
 
-    if (!review) {
+    const transaction = await prisma.$transaction([
+      deleteReviewTags,
+      deleteReview,
+    ]);
+
+    if (!transaction) {
       res.send({ error: true, message: "Review Not Found" });
     } else {
-      res.send(review);
+      res.send({ error: false, message: "Review Deleted" });
     }
   } catch (error) {
     res.send(error);

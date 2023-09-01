@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [changesHappened, setChangesHappened] = useState(false);
+
   const navigate = useNavigate();
+
+  const token = localStorage.getItem(`token`);
 
   useEffect(() => {
     if (localStorage.getItem(`token`)) {
@@ -14,13 +18,12 @@ const Users = () => {
       checkIfAdmin(id);
       fetchUsers();
     }
-  }, []);
+  }, [changesHappened]);
 
   const checkIfAdmin = async (id) => {
     try {
-      const response = await fetch(`api/users/${id}`);
+      const response = await fetch(`/api/users/${id}`);
       const result = await response.json();
-
       setIsAdmin(result.isAdmin);
     } catch (error) {
       console.log(error);
@@ -48,8 +51,28 @@ const Users = () => {
     }
   };
 
+  const deleteUser = async (id) => {
+    try {
+      await fetch(`/api/users/${id}`, {
+        method: `DELETE`,
+        headers: {
+          "Content-Type": `application/json`,
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setChangesHappened(!changesHappened);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const clickHandler = (id) => {
     navigate(`/profile/${id}`);
+  };
+
+  const deleteHandler = (id) => {
+    deleteUser(id);
   };
 
   return (
@@ -57,17 +80,20 @@ const Users = () => {
       <h1>Users</h1>
       {isAdmin ? (
         users.map((user) => (
-          <section
-            key={user.id}
-            className="flex"
-            onClick={() => clickHandler(user.id)}
-          >
+          <section key={user.id} className="flex">
             <section>
-              <img src={user.avatar} className="userAvatar" />
+              <img
+                src={user.avatar}
+                className="userAvatar"
+                onClick={() => clickHandler(user.id)}
+              />
             </section>
             <section>
               <h3>{user.username}</h3>
               <p>Email: {user.email}</p>
+              <button onClick={() => deleteHandler(user.id)}>
+                Delete User
+              </button>
             </section>
           </section>
         ))
