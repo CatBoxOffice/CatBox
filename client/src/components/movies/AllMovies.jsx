@@ -71,7 +71,7 @@ const AllMovies = () => {
             <p>Studio: {movie.studio}</p>
             <p>Language: {movie.language}</p>
             {/* <button onClick={() => navigate(`/add-review/`)}>ADD REVIEW</button> */}
-            <button className="add-review-button" onClick={() => navigate(`/add-review/`)}>
+            <button className="add-review-button" onClick={() => navigate(`/add-review/${movie.id}`)}>
               ADD REVIEW
             </button>
 
