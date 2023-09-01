@@ -5,9 +5,19 @@ import { useNavigate } from "react-router-dom";
 
 // This is where the actual Home code starts:
 const Home = () => {
+  const [userData, setUserData] = useState({});
   const [movies, setMovies] = useState([]);
+
+  const token = localStorage.getItem(`token`);
+  
+
   useEffect(() => {
-    fetchMovies(1)
+    fetchMovies();
+    if (token){
+      const tokenArr = token.split(`.`)
+      const tokenId = JSON.parse(atob(tokenArr[1])).id;
+      fetchUserData(tokenId);
+    }
   }, []);
   // THE FETCH PART
 
@@ -33,6 +43,16 @@ const Home = () => {
       console.error(`Error fetching movies:', error`);
     }
   };
+
+  const fetchUserData = async (id) => {
+    try {
+      const response = await fetch(`/api/users/${id}`);
+      const data = await response.json();
+      setUserData(data);
+    } catch (error) {
+      console.error("Error fetching user data");
+    }
+  };
   // This part is needed for the Navigate button ( TO ADD REVIEW!)
 
   const navigate = useNavigate();
@@ -41,9 +61,9 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Home</h1>
-      <h3>Welcome User</h3>
-      <h2>LIST OF RECENTLY RELEASED FILMS</h2>
+      {token ? <h1>Welcome {userData.username}!</h1> : <h1>Welcome</h1>}
+      
+      <h3>LIST OF RECENTLY RELEASED FILMS</h3>
       {movies.map((movie) => (
         <div className="film-box" key={movie.id}>
           <div className="film-thumbnail">
