@@ -52,10 +52,15 @@ const Home = () => {
       console.error("Error fetching user data");
     }
   };
+
   // This part is needed for the Navigate button ( TO ADD REVIEW!)
-
-
   const navigate = useNavigate();
+
+
+//   const navigate = useNavigate();
+// const clickHandler = () => {
+//   navigate(`${movie.id}`)  
+// }
 
   return (
     <div>
@@ -69,6 +74,7 @@ const Home = () => {
               src={movie.poster}
               alt={`Thumbnail for ${movie.title}`}
               style={{ width: "240px", height: "345px" }}
+              onClick={() => navigate(`/movies/${movie.id}`)}
             />
           </div>
           <div className="film-details">
