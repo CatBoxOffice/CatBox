@@ -20,10 +20,10 @@ const AllMovies = () => {
           return -1;
         } else if (movie1.title > movie2.title) {
           return 1;
-          } else {
-            return 0;
-          }
-          });
+        } else {
+          return 0;
+        }
+      });
 
       setMovies(movieData);
       console.log("Fetched movie data:", movieData)
@@ -62,7 +62,11 @@ const AllMovies = () => {
             <p>Rating: {movie.rating}</p>
             <p>Studio: {movie.studio}</p>
             <p>Language: {movie.language}</p>
-            <button onClick={() => navigate(`/add-review/`)}>ADD REVIEW</button>
+            {/* <button onClick={() => navigate(`/add-review/`)}>ADD REVIEW</button> */}
+            <button className="add-review-button" onClick={() => navigate(`/add-review/`)}>
+              ADD REVIEW
+            </button>
+
           </div>
         </div>
       ))}
