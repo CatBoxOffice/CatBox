@@ -49,6 +49,18 @@ const main = async () => {
 
   // New Users:
 
+  const user5 = await prisma.user.create({
+    data: {
+      username: "BruceTheBugGuy",
+      email: "Bugs4Ever@gmail.com",
+      isAdmin: false,
+      password: await bcrypt.hash("liupw", 10),
+      avatar:
+        "https://events.discoverstillwater.com/wp-content/uploads/sites/events.discoverstillwater.com/images/2020/07/event-featured-Fre-1595106038.jpeg",
+    },
+  });
+
+
   const user6 = await prisma.user.create({
     data: {
       username: "MrMovieMan",
@@ -292,20 +304,48 @@ const main = async () => {
   });
 
   // Movie_Genres:
-  await prisma.movies_Genres.create({
-    data: {
-      movieId: movies1.id,
-      genreId: genreAction.id,
-    },
+
+  // ACTION GENRE:
+  await prisma.movies_Genres.createMany({
+    data: [
+      {
+        movieId: movies1.id,
+        genreId: genreAction.id,
+      },
+      {
+        movieId: movies5.id,
+        genreId: genreAction.id,
+      },
+      {
+        movieId: movies10.id,
+        genreId: genreAction.id,
+      },
+    ],
   });
 
-  await prisma.movies_Genres.create({
-    data: {
-      movieId: movies1.id,
-      genreId: genreDrama.id,
-    },
+  // DRAMA GENRE
+  await prisma.movies_Genres.createMany({
+    data: [
+      {
+        movieId: movies1.id,
+        genreId: genreDrama.id,
+      },
+      {
+        movieId: movies2.id,
+        genreId: genreDrama.id,
+      },
+      {
+        movieId: movies3.id,
+        genreId: genreDrama.id,
+      },
+      {
+        movieId: movies6.id,
+        genreId: genreDrama.id,
+      },
+    ],
   });
 
+  // ROMANCE GENRE
   await prisma.movies_Genres.create({
     data: {
       movieId: movies2.id,
@@ -313,45 +353,43 @@ const main = async () => {
     },
   });
 
-  await prisma.movies_Genres.create({
-    data: {
-      movieId: movies2.id,
-      genreId: genreDrama.id,
-    },
+  // COMEDY GENRE
+  await prisma.movies_Genres.createMany({
+    data: [
+      {
+        movieId: movies3.id,
+        genreId: genreComedy.id,
+      },
+      {
+        movieId: movies4.id,
+        genreId: genreComedy.id,
+      },
+      {
+        movieId: movies7.id,
+        genreId: genreComedy.id,
+      },
+    ],
   });
 
-  await prisma.movies_Genres.create({
-    data: {
-      movieId: movies3.id,
-      genreId: genreComedy.id,
-    },
-  });
+  // SUPERHERO GENRE
+  await prisma.movies_Genres.createMany({
+    data: [
+        {
+          movieId: movies5.id,
+          genreId: genreSuperHero.id,
+        },
+        {
+          movieId: movies8.id,
+          genreId: genreSuperHero.id,
+        },
+      ],
+    });
 
+  // HORROR GENRE
   await prisma.movies_Genres.create({
     data: {
-      movieId: movies3.id,
-      genreId: genreDrama.id,
-    },
-  });
-
-  await prisma.movies_Genres.create({
-    data: {
-      movieId: movies4.id,
-      genreId: genreComedy.id,
-    },
-  });
-
-  await prisma.movies_Genres.create({
-    data: {
-      movieId: movies5.id,
-      genreId: genreAction.id,
-    },
-  });
-
-  await prisma.movies_Genres.create({
-    data: {
-      movieId: movies5.id,
-      genreId: genreSuperHero.id,
+      movieId: movies9.id,
+      genreId: genreHorror.id,
     },
   });
 
@@ -393,6 +431,7 @@ const main = async () => {
     data: {
       userId: user1.id,
       movieId: movies5.id,
+      grade: 93,
       title: "I have never cried so much in my life",
       content: "It was a beautiful movie that brought a lot of joy in my day",
     },
@@ -402,6 +441,7 @@ const main = async () => {
     data: {
       userId: user2.id,
       movieId: movies2.id,
+      grade: 97,
       title: "Best movie I have seen",
       content: "Not too short, not too long. Simply, amazing",
     },
@@ -411,6 +451,7 @@ const main = async () => {
     data: {
       userId: user3.id,
       movieId: movies3.id,
+      grade: 88,
       title: "Fun afternoon movie",
       content: "My cat very and I loved it. The Ending made both of us cry",
     },
@@ -420,6 +461,7 @@ const main = async () => {
     data: {
       userId: user1.id,
       movieId: movies1.id,
+      grade: 92,
       title: "Such a cool movie",
       content: "LOTS OF PEW PEW AND BANG BANG AND WOOOOOWWW",
     },
@@ -429,8 +471,9 @@ const main = async () => {
     data: {
       userId: user2.id,
       movieId: movies1.id,
+      grade: 65,
       title: "It was Alright",
-      content: "Not much of a gun fan but my boyfriend made me watch it",
+      content: "Not much of a gun fan but my friend made me watch it",
     },
   });
 
@@ -438,6 +481,7 @@ const main = async () => {
     data: {
       userId: user3.id,
       movieId: movies5.id,
+      grade: 82,
       title: "Never seen something like this before!",
       content: "Who thought the aliens would be so cool???",
     },
@@ -447,6 +491,7 @@ const main = async () => {
     data: {
       userId: user3.id,
       movieId: movies4.id,
+      grade: 90,
       title: "It was so emotional",
       content: "Ima go write in my notebook after this",
     },
@@ -458,6 +503,7 @@ const main = async () => {
     data: {
       userId: user10.id,
       movieId: movies6.id,
+      grade: 98,
       title: "Oppen-hellyeah",
       content: "Chris Nolan is so sick a directing, bro. No cap frfr",
     },
@@ -467,7 +513,8 @@ const main = async () => {
     data: {
       userId: user10.id,
       movieId: movies7.id,
-      title: "Barbie's tight, bro",
+      grade: 94,
+      title: "Barbie's straight gas, bro",
       content: "Margo Robbie's a total smoke show, bro. No cap frfr. Movie's a little too pink though, bro frfr.",
     },
   });
@@ -476,6 +523,7 @@ const main = async () => {
     data: {
       userId: user8.id,
       movieId: movies6.id,
+      grade: 50,
       title: "Not for me...",
       content: "All that nuclear radiation must be terrible for everyone's plants.",
     },
@@ -485,6 +533,7 @@ const main = async () => {
     data: {
       userId: user8.id,
       movieId: movies7.id,
+      grade: 99,
       title: "Love love love",
       content: "Loved this movie. Reminded me off all my Barbie dolls I used to have.",
     },
@@ -494,6 +543,7 @@ const main = async () => {
     data: {
       userId: user9.id,
       movieId: movies8.id,
+      grade: 89,
       title: "Pretty dope flick",
       content: "Took Stevie to see this movie. He paid, of course. Entertaining movie",
     },
@@ -503,6 +553,7 @@ const main = async () => {
     data: {
       userId: user9.id,
       movieId: movies9.id,
+      grade: 96,
       title: "Better than ever!",
       content: "John Carpenter's movies are always awesome...especially on the big screen!",
     },
@@ -512,6 +563,7 @@ const main = async () => {
     data: {
       userId: user7.id,
       movieId: movies10.id,
+      grade: 91,
       title: "Best action franchise",
       content: "Tom Cruise is the man. Goes hard with the stunts and looks great running.",
     },
@@ -521,6 +573,7 @@ const main = async () => {
     data: {
       userId: user7.id,
       movieId: movies8.id,
+      grade: 35,
       title: "Horrible waste of time",
       content: "I would have rather watched Mission Impossible again...I blame my nephew, Gabriel.",
     },
@@ -530,6 +583,7 @@ const main = async () => {
     data: {
       userId: user6.id,
       movieId: movies10.id,
+      grade: 77,
       title: "Not the best M.I. movie but still good",
       content: "I love seeing this franchise grow but would have liked more razzle dazzle.",
     },
@@ -539,10 +593,42 @@ const main = async () => {
     data: {
       userId: user6.id,
       movieId: movies9.id,
+      grade: 93,
       title: "John Carpenter is the best",
       content: "Happy they did another theatrical run of this cult masterpiece. Wore out my VHS copy 13 years ago.",
     },
   });
+
+  const reviews18 = await prisma.review.create({
+    data: {
+      userId: user5.id,
+      movieId: movies2.id,
+      grade: 25,
+      title: "Movie needed more bugs",
+      content: "I kept looking for bugs but couldn't find any...it's a shame. BugGuy out.",
+    },
+  });
+
+  const reviews19 = await prisma.review.create({
+    data: {
+      userId: user5.id,
+      movieId: movies8.id,
+      grade: 10,
+      title: "Not an accurate portayal of a Beetle",
+      content: "Trust me, I collect Beetles and none of them have traits like this. BugGuy out.",
+    },
+  });
+
+  const reviews20 = await prisma.review.create({
+    data: {
+      userId: user4.id,
+      movieId: movies10.id,
+      grade: 95,
+      title: "An absolute must",
+      content: "Loved it but would have been better if Hugh Jackman was in it.",
+    },
+  });
+
 
   // REVIEW_TAGS:
 
