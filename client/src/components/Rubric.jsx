@@ -7,16 +7,13 @@ const Rubric = () => {
     <>
       <h1>Our Stanley Rubric</h1>
       <p>
-        Here at CatBoxOffice, a good film is rewarded with a cheezburger and a bad film gets
-        scattered within the scat of the catbox. Keep this in mind when you’re
-        reviewing a film. Do you reward it with a juicy Cheezburger? Or do you
-        banish it into the lost land of litter to wallow for an eternity?
+        Here at CatBoxOffice, a good film is rewarded with a cheezburger and a bad film gets scattered in the scat of the catbox. 
+        Keep this in mind when you’re reviewing a film: 
+        Do you reward it with a juicy cheezburger, or do you banish it into the lost land of litter to wallow for an eternity?
       </p>
-      <p>How do
-        we know if a film has Cheezburger you ask? If a film receives a 75 or
-        higher grade (scale of 1-100) it is rewarded with a big ol’ 80/20
-        juicy Burger. Anything else plummets to the catbox stinkfest where it
-        belongs. It is up to you to choose it’s destiny!</p>
+      <p>If a film receives a grade of 75 or higher (on a scale of 1-100), then it is rewarded with a big ol’ 80/20 juicy cheezburger. 
+        Anything less, and it plummets to the catbox stinkfest where it belongs. 
+        It is up to you to choose its destiny!</p>
       <img src={cheeseburger} alt="Has Cheezburger" style={{ width: '350px', height: 'auto' }} />
       <img src={catmeme} alt="Cat Meme" style={{ width: '350px', height: 'auto' }} />
       <img src={kittylitter} alt="Cat Scat" style={{ width: '350px', height: 'auto' }} />
