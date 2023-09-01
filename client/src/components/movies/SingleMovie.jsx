@@ -23,17 +23,26 @@ const SingleMovie = () => {
 
   const clickHandler = () => {
     navigate(`/add-review/${movie.id}`);
-  }
+  };
 
   return (
     <section>
       <section>
         <img src={movie.poster} id="singleMoviePoster" />
         <h2>{movie.title}</h2>
-        <p>Genre: {movie.Movies_Genres.map((genre) => (
-              <>{genre.genres.name} </>
-            ))}</p>
-        <p>{movie.rating}</p>
+        <p style={{ display: "inline" }}>
+          Genre:{" "}
+          {movie.Movies_Genres && movie.Movies_Genres.length > 0
+            ? movie.Movies_Genres.map((genre, index) => (
+                <div key={index} style={{ display: "inline" }}>
+                  {genre.genres.name}
+                  {index < movie.Movies_Genres.length - 1 ? ", " : ""}
+                </div>
+              ))
+            : "N/A"}
+        </p>
+
+        <p>Rated {movie.rating}</p>
         <button onClick={clickHandler}>Add Review</button>
       </section>
 
@@ -50,7 +59,6 @@ const SingleMovie = () => {
             <div>
               {movie.reviews.map((review) => (
                 <section key={review.id}>
-                  {console.log(`REVIEW`, review)}
                   <h3>{review.title}</h3>
                   <p>{review.content}</p>
                 </section>
