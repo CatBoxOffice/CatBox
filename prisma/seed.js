@@ -303,6 +303,186 @@ const main = async () => {
     },
   });
 
+  const movies11 = await prisma.movie.create({
+    data: {
+      title: "Boogie Nights",
+      description:
+        "Back when sex was safe, pleasure was a business and business was booming, an idealistic porn producer aspires to elevate his craft to an art when he discovers a hot young talent.",
+      poster:
+        "https://m.media-amazon.com/images/M/MV5BY2E2YWYxY2QtZmJmZi00MjJlLWFiYWItZTk5Y2IyMWQ1ZThhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
+      year: 1997,
+      rating: "R",
+      director: "Paul Thomas Anderson",
+      studio: "New Line Cinema",
+      language: "English",
+    },
+  });
+
+  const movies12 = await prisma.movie.create({
+    data: {
+      title: "Koyaanisqatsi",
+      description:
+        "A collection of expertly photographed phenomena with no conventional plot. The footage focuses on nature, humanity, and the relationship between them.",
+      poster:
+        "https://upload.wikimedia.org/wikipedia/commons/8/8d/Koyaanisqatsi_%281982_poster%29.jpg",
+      year: 1983,
+      rating: "Not Rated",
+      director: "Godfrey Reggio",
+      studio: "American Zoetrope",
+      language: "English",
+    },
+  });
+
+  const movies13 = await prisma.movie.create({
+    data: {
+      title: "Apocalypto",
+      description:
+        " As the Mayan kingdom faces its decline, a young man is taken on a perilous journey to a world ruled by fear and oppression.",
+      poster:
+        "https://m.media-amazon.com/images/I/71d+Ko8zA4L.jpg",
+      year: 2006,
+      rating: "R",
+      director: "Mel Gibson",
+      studio: "Icon Productions",
+      language: "Maya",
+    },
+  });
+
+  const movies14 = await prisma.movie.create({
+    data: {
+      title: "Children of Men",
+      description:
+        "In 2027, in a chaotic world in which women have somehow become infertile, a former activist agrees to help transport a miraculously pregnant woman to a sanctuary at sea.",
+      poster:
+        "https://www.originalfilmart.com/cdn/shop/files/children_of_men_2006_original_film_art_60df9302-646d-4ac9-8a1c-c9d0e57d2cad.webp?v=1683923881",
+      year: 2006,
+      rating: "R",
+      director: "Alfonso Cuarón",
+      studio: "Universal Pictures",
+      language: "English",
+    },
+  });
+
+  const movies15 = await prisma.movie.create({
+    data: {
+      title: "Everything Everywhere All at Once",
+      description:
+        "A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led.",
+      poster:
+        "https://m.media-amazon.com/images/I/61yIwId5-bL._AC_SL1500_.jpg",
+      year: 2022,
+      rating: "R",
+      director: "Daniels",
+      studio: "A24",
+      language: "English, Mandarin, Cantonese",
+    },
+  });
+
+  const movies16 = await prisma.movie.create({
+    data: {
+      title: "The Unbearable Weight of Massive Talent",
+      description:
+        "Moviestar Nick Cage is channeling his iconic characters as he's caught between a superfan and a CIA agent.",
+      poster:
+        "https://www.movieposters.com/cdn/shop/products/the-unbearable-weight-of-massive-talent_mqp1qkhd_0584a5d1-6407-4055-b2be-ad2f17e65f4f_480x.progressive.jpg?v=1652820942",
+      year: 2022,
+      rating: "R",
+      director: "Tom Gormican",
+      studio: "Burr! Productions",
+      language: "English, Spanish",
+    },
+  });
+
+  const movies17 = await prisma.movie.create({
+    data: {
+      title: "Old Boy",
+      description:
+        "After being kidnapped and imprisoned for fifteen years, Oh Dae-Su is released, only to find that he must find his captor in five days.",
+      poster:
+        "https://m.media-amazon.com/images/I/51x2uSLzv3L._AC_UF894,1000_QL80_.jpg",
+      year: 2003,
+      rating: "R",
+      director: "Park Chan-wook",
+      studio: "Show East",
+      language: "Korean",
+    },
+  });
+
+  const movies18 = await prisma.movie.create({
+    data: {
+      title: "Amores Perros",
+      description:
+        "A horrific car accident connects three stories, each involving characters dealing with loss, regret, and life's harsh realities, all in the name of love.",
+      poster:
+        "https://m.media-amazon.com/images/I/818ggxbKJbL._SL1500_.jpg",
+      year: 2000,
+      rating: "R",
+      director: "Alejandro G. Iñárritu",
+      studio: "Altavista Films",
+      language: "Spanish",
+    },
+  });
+
+  const movies19 = await prisma.movie.create({
+    data: {
+      title: "Skyscraper",
+      description:
+        "A security expert must infiltrate a burning skyscraper, 225 stories above ground, when his family is trapped inside by criminals.",
+      poster:
+        "https://m.media-amazon.com/images/I/51P9koT97WL._AC_UF894,1000_QL80_.jpg",
+      year: 2018,
+      rating: "PG-13",
+      director: "Rawson Marshall Thurber",
+      studio: "Legendary Entertainment",
+      language: "English",
+    },
+  });
+
+  const movies20 = await prisma.movie.create({
+    data: {
+      title: "Grown Ups",
+      description:
+        "After their high school basketball coach passes away, five good friends and former teammates reunite for a Fourth of July holiday weekend.",
+      poster:
+        "https://m.media-amazon.com/images/I/51AMyXw-IHL._AC_UF894,1000_QL80_.jpg",
+      year: 2010,
+      rating: "PG-13",
+      director: "Dennis Dugan",
+      studio: "Columbia Pictures",
+      language: "English",
+    },
+  });
+
+  const movies21 = await prisma.movie.create({
+    data: {
+      title: "Piranha 3D",
+      description:
+        "After a sudden underwater tremor sets free scores of the prehistoric man-eating fish, an unlikely group of strangers must band together to stop themselves from becoming fish food for the area's new razor-toothed residents.",
+      poster:
+        "https://m.media-amazon.com/images/M/MV5BMTU3NDg2NTY4Nl5BMl5BanBnXkFtZTcwMTM0OTE3Mw@@._V1_.jpg",
+      year: 2010,
+      rating: "R",
+      director: "Alexandre Aja",
+      studio: "Dimension Films",
+      language: "English",
+    },
+  });
+
+  const movies22 = await prisma.movie.create({
+    data: {
+      title: "Steel",
+      description:
+        "A scientist for the military turns himself into a cartoon-like superhero when a version of one of his own weapons is being used against enemies.",
+      poster:
+        "https://m.media-amazon.com/images/I/51mMI9adzcL._AC_UF894,1000_QL80_.jpg",
+      year: 1997,
+      rating: "PG-13",
+      director: "Kenneth Johnson",
+      studio: "Warner Bros.",
+      language: "English",
+    },
+  });
+
   // Movie_Genres:
 
   // ACTION GENRE:
@@ -626,6 +806,208 @@ const main = async () => {
       grade: 95,
       title: "An absolute must",
       content: "Loved it but would have been better if Hugh Jackman was in it.",
+    },
+  });
+
+  // Even more reviews:
+
+  const reviews21 = await prisma.review.create({
+    data: {
+      userId: user1.id,
+      movieId: movies22.id,
+      grade: 2,
+      title: "Why did this get made?",
+      content: "I understand Shaq was hot in the 90's by good lord. Into the catbox you go!",
+    },
+  });
+
+  const reviews22 = await prisma.review.create({
+    data: {
+      userId: user2.id,
+      movieId: movies16.id,
+      grade: 75,
+      title: "Liked it but didn't love it",
+      content: "Felt the story was too silly to be believable. Pedro Pascal is a wonderful actor though. No catbox for you.",
+    },
+  });
+
+  const reviews23 = await prisma.review.create({
+    data: {
+      userId: user3.id,
+      movieId: movies21.id,
+      grade: 45,
+      title: "Good but terrible...idk",
+      content: "Cheesy genre film that I lost interest in quickly.",
+    },
+  });
+
+  const reviews24 = await prisma.review.create({
+    data: {
+      userId: user4.id,
+      movieId: movies20.id,
+      grade: 60,
+      title: "Had potential but wound up suckin",
+      content: "This movie is a prime case of wishing Chris Farley was still alive...you'd get a cheeseburger for that.",
+    },
+  });
+
+  const reviews25 = await prisma.review.create({
+    data: {
+      userId: user5.id,
+      movieId: movies17.id,
+      grade: 78,
+      title: "I don't speak Korean",
+      content: "But I'm pretty sure they were talking about how cool bugs are. BugGuy out",
+    },
+  });
+
+  const reviews26 = await prisma.review.create({
+    data: {
+      userId: user6.id,
+      movieId: movies15.id,
+      grade: 50,
+      title: "I didn't get it",
+      content: "Came off as vulgar and confusing. Jamie Lee Curtis still got it goin on though...golly",
+    },
+  });
+
+  const reviews27 = await prisma.review.create({
+    data: {
+      userId: user7.id,
+      movieId: movies13.id,
+      grade: 50,
+      title: "Incredible movie",
+      content: "Jaguar Paw is the coolest. He's one tough customer. I'd shake that man's hand if I could.",
+    },
+  });
+
+  const reviews28 = await prisma.review.create({
+    data: {
+      userId: user8.id,
+      movieId: movies14.id,
+      grade: 60,
+      title: "I wouldn't want to live in that world",
+      content: "The post-apocalyptic world has lots of vegitation but not the fun plants...only the sad ones.",
+    },
+  });
+
+  const reviews29 = await prisma.review.create({
+    data: {
+      userId: user9.id,
+      movieId: movies11.id,
+      grade: 55,
+      title: "Not a Marky Mark guy",
+      content: "I could probably take him in a fight. I was distracted during the movie cuz I wanted to fight him.",
+    },
+  });
+
+  const reviews30 = await prisma.review.create({
+    data: {
+      userId: user10.id,
+      movieId: movies15.id,
+      grade: 85,
+      title: "Great fight scenes",
+      content: "Didn't really get any of the story line but the fighting was tight, bro. So sick. All that fighting and stuff.",
+    },
+  });
+
+  const reviews31 = await prisma.review.create({
+    data: {
+      userId: user10.id,
+      movieId: movies18.id,
+      grade: 82,
+      title: "A bit of a downer",
+      content: "I watched this at work and my boss asked why I was crying and I told him I had something in my eye. Bro doesn't know I just watch and review movies all day frfr tight bro.",
+    },
+  });
+
+  const reviews32 = await prisma.review.create({
+    data: {
+      userId: user1.id,
+      movieId: movies12.id,
+      grade: 100,
+      title: "My absolute favorite",
+      content: "Sometimes you don't need dialogue or narrative. The power of beautiful imagery and an incredible soundtrack makes this film so special.",
+    },
+  });
+
+  const reviews33 = await prisma.review.create({
+    data: {
+      userId: user2.id,
+      movieId: movies17.id,
+      grade: 95,
+      title: "One of the best international films",
+      content: "Everything about this film is amazing",
+    },
+  });
+
+  const reviews34 = await prisma.review.create({
+    data: {
+      userId: user4.id,
+      movieId: movies18.id,
+      grade: 78,
+      title: "Sad but beautiful",
+      content: "Kinda ruins your day but still worth watching",
+    },
+  });
+
+  const reviews35 = await prisma.review.create({
+    data: {
+      userId: user4.id,
+      movieId: movies19.id,
+      grade: 40,
+      title: "This was really bad",
+      content: "I usually like movies with The Rock but this one is just too bad.",
+    },
+  });
+
+  const reviews36 = await prisma.review.create({
+    data: {
+      userId: user5.id,
+      movieId: movies22.id,
+      grade: 100,
+      title: "You just don't get it",
+      content: "Everyone hates this movie but I think it's great...so do my bugs. BugGuy out.",
+    },
+  });
+
+  const reviews37 = await prisma.review.create({
+    data: {
+      userId: user6.id,
+      movieId: movies12.id,
+      grade: 100,
+      title: "Influential",
+      content: "The synchronicity of motion control time lapse filmmaking and Philip Glass's score is a treat that was ahead of it's time.",
+    },
+  });
+
+  const reviews38 = await prisma.review.create({
+    data: {
+      userId: user7.id,
+      movieId: movies16.id,
+      grade: 95,
+      title: "Nicholas Cage is a National Treasure",
+      content: "I'm not saying that because of that incredible movie...someone should give him the key to America",
+    },
+  });
+
+  const reviews39 = await prisma.review.create({
+    data: {
+      userId: user8.id,
+      movieId: movies15.id,
+      grade: 80,
+      title: "Makes me want to put googly eyes on my plants",
+      content: "If Jobu Tupaki came around my garden I'd throw salt on her like I do for snails.",
+    },
+  });
+
+  const reviews40 = await prisma.review.create({
+    data: {
+      userId: user9.id,
+      movieId: movies20.id,
+      grade: 100,
+      title: "I love this movie",
+      content: "This movie gets a lot of hate but Adam Sandler is the man.",
     },
   });
 
