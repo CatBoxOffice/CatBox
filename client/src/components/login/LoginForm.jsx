@@ -35,7 +35,7 @@ const LoginForm = ({ setLoginInfo }) => {
         <br />
         <button>Login</button>
       </form>
-      <Link to={`/register`} >Not a User? Register!</Link>
+      <Link to={`/register`}>Not a User? Register!</Link>
     </>
   );
 };
