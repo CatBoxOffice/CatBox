@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import cheeseburger from './images/Cheeseburger3.png';
+import kittylitter from './images/dirty_litter_box.png';
 
 const Profile = () => {
   const [userData, setUserData] = useState({});
@@ -55,7 +57,7 @@ const Profile = () => {
   return (
     <div>
       <h1>{userData.username}'s Profile</h1>
-      <img src={userData.avatar} alt="ProfilePic" />
+      <img src={userData.avatar} alt="ProfilePic" style={{ width: '400px', height: 'auto' }}/>
 
       <div>
         <h2>{userData.username}'s Information</h2>
@@ -72,8 +74,16 @@ const Profile = () => {
         {userReviews.map((review) => (
           <section key={review.id}>
             <h3>{review.movie.title}</h3>
+            
+            {review.grade >= 75 ? (
+              <img src={cheeseburger} alt="Has Cheezburger" style={{ width: '120px', height: '100px' }} />
+            ) : (
+              <img src={kittylitter} alt="Cat Scat" style={{ width: '120px', height: '100px' }} />
+            )}
+            
             {!wantUpdate ? (
               <section>
+                <h4>Grade: {review.grade}</h4>
                 <h4>{review.title}</h4>
                 <p>{review.content}</p>
               </section>
