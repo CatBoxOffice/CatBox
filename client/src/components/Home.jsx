@@ -118,8 +118,10 @@ const Home = () => {
         }
       });
 
-      setMovies(movieData);
-      console.log("Fetched movie data:", movieData)
+      // Filter movies with year 2023
+      const filteredMovies = movieData.filter((movie) => movie.year === 2023);
+
+      setMovies(filteredMovies);
     } catch (error) {
       console.error(`Error fetching movies:', error`);
     }
@@ -131,9 +133,11 @@ const Home = () => {
   // The return has the MAP function in it and the details as well for the movies with the ADD REVIEW button
   return (
     <div>
-      <h1>Home</h1>
-      <h3>Welcome User</h3>
-      <h2>LIST OF RECENTLY RELEASED FILMS</h2>
+
+      {token ? <h1>Welcome {userData.username}!</h1> : <h1>Welcome</h1>}
+      
+      <h3>RECENT RELEASES</h3>
+
       {movies.map((movie) => (
         <div className="film-box" key={movie.id}>
           <div className="film-thumbnail">
