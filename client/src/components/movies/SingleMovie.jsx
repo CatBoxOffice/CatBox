@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import cheeseburger from "../images/Cheeseburger3.png";
 import kittylitter from "../images/dirty_litter_box.png";
 
@@ -13,12 +13,16 @@ const SingleMovie = () => {
       try {
         const response = await fetch(`/api/movies/${id}`);
         const movie = await response.json();
-        
+
         const reviewsWithUsername = await Promise.all(
           movie.reviews.map(async (review) => {
             const userResponse = await fetch(`/api/users/${review.userId}`);
             const userData = await userResponse.json();
-            return { ...review, username: userData.username, avatar: userData.avatar };
+            return {
+              ...review,
+              username: userData.username,
+              avatar: userData.avatar,
+            };
           })
         );
 
@@ -29,7 +33,7 @@ const SingleMovie = () => {
     };
 
     fetchMovie(movieId);
-  }, []);
+  }, [movieId]);
 
   const clickHandler = () => {
     navigate(`/add-review/${movie.id}`);
@@ -65,14 +69,20 @@ const SingleMovie = () => {
               {movie.reviews.map((review) => (
                 <section key={review.id}>
                   <div style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src={review.avatar} // Use the avatar from userData
-            id="navbarAvatar"
-            alt="User Avatar"
-            style={{ width: "40px", height: "40px", marginRight: "10px" }}
-          />
-          <h2>{review.username}</h2>
-        </div>
+                    <Link to={`/profile/${review.userId}`}>
+                      <img
+                        src={review.avatar} // Use the avatar from userData
+                        id="navbarAvatar"
+                        alt="User Avatar"
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          marginRight: "10px",
+                        }}
+                      />
+                    </Link>
+                    <h2>{review.username}</h2>
+                  </div>
                   <h3>{review.title}</h3>
                   <h3>Grade: {review.grade}</h3>
                   {review.grade >= 75 ? (
