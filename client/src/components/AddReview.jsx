@@ -32,13 +32,22 @@ const AddReview = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      const token = localStorage.getItem("jwtToken");
+
+    if (!token) {
+      console.error("JWT token is missing.");
+      return;
+    }
       const response = await fetch("/api/reviews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(reviewData),
       });
+
+      console.log("Server Response:", response);
 
       if (response.ok) {
         // Handle successful submission
