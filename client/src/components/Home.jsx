@@ -4,16 +4,14 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 const Home = () => {
-
-    const [userData, setUserData] = useState({});
-    const [movies, setMovies] = useState([]);
-    const token = localStorage.getItem(`token`);
-
+  const [userData, setUserData] = useState({});
+  const [movies, setMovies] = useState([]);
+  const token = localStorage.getItem(`token`);
 
   useEffect(() => {
     fetchMovies();
     if (token) {
-      const tokenArr = token.split(`.`)
+      const tokenArr = token.split(`.`);
       const tokenId = JSON.parse(atob(tokenArr[1])).id;
       fetchUserData(tokenId);
     }
@@ -34,9 +32,8 @@ const Home = () => {
         }
       });
 
-     const filteredMovies = movieData.filter((movie) => movie.year === 2023);
+      const filteredMovies = movieData.filter((movie) => movie.year === 2023);
 
-      
       setMovies(filteredMovies);
     } catch (error) {
       console.error(`Error fetching movies:`, error);
@@ -56,11 +53,10 @@ const Home = () => {
   // This part is needed for the Navigate button ( TO ADD REVIEW!)
   const navigate = useNavigate();
 
-
-//   const navigate = useNavigate();
-// const clickHandler = () => {
-//   navigate(`${movie.id}`)  
-// }
+  //   const navigate = useNavigate();
+  // const clickHandler = () => {
+  //   navigate(`${movie.id}`)
+  // }
 
   return (
     <div>
@@ -79,17 +75,28 @@ const Home = () => {
           </div>
           <div className="film-details">
             <h2>{movie.title}</h2>
-            <p>Genre: {movie.Movies_Genres.map((genre) => (
-              <>{genre.genres.name} </>
-            ))}</p>
+            <p>
+              Genre:{" "}
+              {movie.Movies_Genres.map((genre) => (
+                <>{genre.genres.name} </>
+              ))}
+            </p>
             <p>{movie.description}</p>
-            <p>Grade:</p>
-            <p>Director: {movie.director}</p>
-            <p>Year: {movie.year}</p>
             <p>Rated {movie.rating}</p>
+            <p>Director: {movie.director}</p>
+            <p>Released {movie.year}</p>
             <p>Studio: {movie.studio}</p>
             <p>Language: {movie.language}</p>
-            <button className="add-review-button" onClick={() => navigate(`/add-review/${movie.id}`)}>
+            <button
+              className="add-review-button"
+              onClick={() =>
+                navigate(
+                  `/add-review/${movie.id}?title=${encodeURIComponent(
+                    movie.title
+                  )}`
+                )
+              }
+            >
               ADD REVIEW
             </button>
           </div>

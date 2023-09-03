@@ -36,7 +36,7 @@ const SingleMovie = () => {
   }, [movieId]);
 
   const clickHandler = () => {
-    navigate(`/add-review/${movie.id}`);
+    navigate(`/add-review/${movie.id}`, { state: { referringPage: window.location.pathname } });
   };
 
   return (
@@ -55,11 +55,15 @@ const SingleMovie = () => {
               ))
             : "N/A"}
         </p>
+        <p>{movie.description}</p>
         <p>Rated {movie.rating}</p>
         <p>Director: {movie.director}</p>
+        <p>Released {movie.year}</p>
         <p>Studio: {movie.studio}</p>
         <p>Language: {movie.language}</p>
-        <button onClick={clickHandler}>Add Review</button>
+        <button className="add-review-button" onClick={clickHandler}>
+          ADD REVIEW
+        </button>
       </section>
 
       <section>

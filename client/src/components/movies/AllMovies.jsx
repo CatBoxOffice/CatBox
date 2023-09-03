@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const AllMovies = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    fetchMovies(1)
+    fetchMovies(1);
   }, []);
 
   // THE FETC PART
@@ -26,7 +26,7 @@ const AllMovies = () => {
       });
 
       setMovies(movieData);
-      console.log("Fetched movie data:", movieData)
+      console.log("Fetched movie data:", movieData);
     } catch (error) {
       console.error(`Error fetching movies:', error`);
     }
@@ -47,38 +47,46 @@ const AllMovies = () => {
             <img
               src={movie.poster}
               alt={`Thumbnail for ${movie.title}`}
-              style={{ width: "270px", height: "345px" }}
+              style={{ width: "240px", height: "345px" }}
+              onClick={() => navigate(`/movies/${movie.id}`)}
             />
-
           </div>
           <div className="film-details">
             <h2>{movie.title}</h2>
             <p style={{ display: "inline" }}>
-          Genre:{" "}
-          {movie.Movies_Genres && movie.Movies_Genres.length > 0
-            ? movie.Movies_Genres.map((genre, index) => (
-                <div key={index} style={{ display: "inline" }}>
-                  {genre.genres.name}
-                  {index < movie.Movies_Genres.length - 1 ? ", " : ""}
-                </div>
-              ))
-            : "N/A"}
-        </p>
+              Genre:{" "}
+              {movie.Movies_Genres && movie.Movies_Genres.length > 0
+                ? movie.Movies_Genres.map((genre, index) => (
+                    <div key={index} style={{ display: "inline" }}>
+                      {genre.genres.name}
+                      {index < movie.Movies_Genres.length - 1 ? ", " : ""}
+                    </div>
+                  ))
+                : "N/A"}
+            </p>
             <p>{movie.description}</p>
             <p>Rated {movie.rating}</p>
             <p>Director: {movie.director}</p>
-            <p>Year: {movie.year}</p>
+            <p>Released {movie.year}</p>
             <p>Studio: {movie.studio}</p>
             <p>Language: {movie.language}</p>
             {/* <button onClick={() => navigate(`/add-review/`)}>ADD REVIEW</button> */}
-            <button className="add-review-button" onClick={() => navigate(`/add-review/${movie.id}`)}>
+            <button
+              className="add-review-button"
+              onClick={() =>
+                navigate(
+                  `/add-review/${movie.id}?title=${encodeURIComponent(
+                    movie.title
+                  )}`
+                )
+              }
+            >
               ADD REVIEW
             </button>
-
           </div>
         </div>
       ))}
-    </div >
+    </div>
   );
 };
 
