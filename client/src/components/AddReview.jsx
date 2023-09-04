@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 // import Home from "./Home";
 
 const AddReview = () => {
@@ -8,65 +8,56 @@ const AddReview = () => {
   const queryParams = new URLSearchParams(location.search);
   const movieTitle = queryParams.get("title");
   const navigate = useNavigate();
-  const referringPage = location.state && location.state.referringPage;
+  const { movieId } = useParams();
+  const token = localStorage.getItem("token");
+  const tokenArr = token.split(`.`);
 
   const [reviewData, setReviewData] = useState({
     title: "",
     content: "",
-    user: "",
-    // rating: '', <-- Not currently represented in the schema.
-    movie: "",
-    Review_Tags: "",
+    grade: 0,
+    userId: JSON.parse(atob(tokenArr[1])).id,
+    movieId: Number(movieId),
+    // Review_Tags: "",
   });
-
-  useEffect(() => {}, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setReviewData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: isNaN(+value) ? value : Number(value),
     }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const token = localStorage.getItem("jwtToken");
+      if (!token) {
+        console.error("JWT token is missing.");
+        return;
+      }
 
-    if (!token) {
-      console.error("JWT token is missing.");
-      return;
-    }
       const response = await fetch("/api/reviews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(reviewData),
       });
 
+      const result = await response.json();
+
       console.log("Server Response:", response);
 
-      if (response.ok) {
+      console.log(result.id);
+
+      if (result.id) {
         // Handle successful submission
         console.log("Review added successfully");
-        setReviewData({
-          title: "",
-          description: "",
-          // rating: '', <-- Not currently represented in the schema.
-          user: "",
-          movie: "",
-          content: "",
-        });
 
         // Redirect to the original movie page after successful submission of a review for that movie.
-        if (referringPage) {
-          navigate(referringPage);
-        } else {
-          navigate("/"); // If referringPage is not available, go back to the home page
-        }
+        navigate(`/movies/${movieId}`)
       } else {
         console.error("Failed to add review");
       }
@@ -88,6 +79,7 @@ const AddReview = () => {
           required
           placeholder="Tell us your initial thought"
         />
+        <br />
         <label>Review Body:</label>
         <textarea
           name="content"
@@ -98,6 +90,17 @@ const AddReview = () => {
           cols="40"
           placeholder="Expand on your thoughts"
         ></textarea>
+        <br />
+        <label>Grade:</label>
+        <input
+          type="number"
+          name="grade"
+          value={reviewData.grade}
+          onChange={handleChange}
+          required
+          placeholder="grade from 0-100"
+        />
+        <br />
         <button type="submit">Add Review</button>
       </form>
     </div>
