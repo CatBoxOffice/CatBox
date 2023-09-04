@@ -5,10 +5,13 @@ import kittylitter from "../images/dirty_litter_box.png";
 
 const SingleMovie = () => {
   const [movie, setMovie] = useState({});
+  const [movieOverallGrade, setMovieOverallGrade] = useState(0);
   const navigate = useNavigate();
   const { movieId } = useParams();
+  console.log(movieOverallGrade)
 
   useEffect(() => {
+    const movieGrades = [];
     const fetchMovie = async (id) => {
       try {
         const response = await fetch(`/api/movies/${id}`);
@@ -26,6 +29,9 @@ const SingleMovie = () => {
           })
         );
 
+        movie.reviews.map((review) => movieGrades.push(review.grade));
+        calculateAverage(movieGrades);
+
         setMovie({ ...movie, reviews: reviewsWithUsername });
       } catch (error) {
         console.log(error);
@@ -35,8 +41,22 @@ const SingleMovie = () => {
     fetchMovie(movieId);
   }, [movieId]);
 
+  const calculateAverage = (numArr) => {
+    let total = 0;
+    let count = 0;
+
+    numArr.forEach((num) => {
+      total += num;
+      count++;
+    });
+
+    setMovieOverallGrade(total / count);
+  };
+
   const clickHandler = () => {
-    navigate(`/add-review/${movie.id}`, { state: { referringPage: window.location.pathname } });
+    navigate(`/add-review/${movie.id}`, {
+      state: { referringPage: window.location.pathname },
+    });
   };
 
   return (
@@ -44,14 +64,32 @@ const SingleMovie = () => {
       <section>
         <img src={movie.poster} id="singleMoviePoster" />
         <h2>{movie.title}</h2>
+
+        <section>
+          <span>Overall Rating: </span>
+          {movieOverallGrade >= 75 ? (
+                    <img
+                      src={cheeseburger}
+                      alt="Has Cheezburger"
+                      style={{ width: "120px", height: "100px" }}
+                    />
+                  ) : (
+                    <img
+                      src={kittylitter}
+                      alt="Cat Scat"
+                      style={{ width: "120px", height: "100px" }}
+                    />
+                  )}
+        </section>
+
         <p style={{ display: "inline" }}>
           Genre:{" "}
           {movie.Movies_Genres && movie.Movies_Genres.length > 0
             ? movie.Movies_Genres.map((genre, index) => (
-                <div key={index} style={{ display: "inline" }}>
+                <span key={index} style={{ display: "inline" }}>
                   {genre.genres.name}
                   {index < movie.Movies_Genres.length - 1 ? ", " : ""}
-                </div>
+                </span>
               ))
             : "N/A"}
         </p>
