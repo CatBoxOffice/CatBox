@@ -7,8 +7,6 @@ function NavBar({ loggedIn, setLoggedIn }) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [userId, setUserId] = useState(null);
 
-  console.log(isAdmin);
-
   const navigate = useNavigate(); // Hook for navigation
 
   useEffect(() => {

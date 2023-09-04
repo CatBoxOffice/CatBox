@@ -87,18 +87,23 @@ const Home = () => {
             <p>Released {movie.year}</p>
             <p>Studio: {movie.studio}</p>
             <p>Language: {movie.language}</p>
-            <button
+            {
+              token ?
+
+              <button
               className="add-review-button"
               onClick={() =>
                 navigate(
                   `/add-review/${movie.id}?title=${encodeURIComponent(
                     movie.title
-                  )}`
-                )
-              }
-            >
+                    )}`
+                    )
+                  }
+                  >
               ADD REVIEW
             </button>
+            : null
+            }
           </div>
         </div>
       ))}
