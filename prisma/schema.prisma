@@ -47,6 +47,7 @@ model Review {
   userId      Int
   movie       Movie         @relation(fields: [movieId], references: [id])
   movieId     Int
+  username    String        @map("username") @db.VarChar(255) @default("")
   Review_Tags Review_Tags[]
 }
 
