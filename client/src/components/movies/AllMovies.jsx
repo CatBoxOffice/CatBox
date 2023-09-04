@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const AllMovies = () => {
   const [movies, setMovies] = useState([]);
+  const token = localStorage.getItem(`token`);
+
   useEffect(() => {
     fetchMovies(1);
   }, []);
@@ -71,18 +73,20 @@ const AllMovies = () => {
             <p>Studio: {movie.studio}</p>
             <p>Language: {movie.language}</p>
             {/* <button onClick={() => navigate(`/add-review/`)}>ADD REVIEW</button> */}
-            <button
-              className="add-review-button"
-              onClick={() =>
-                navigate(
-                  `/add-review/${movie.id}?title=${encodeURIComponent(
-                    movie.title
-                  )}`
-                )
-              }
-            >
-              ADD REVIEW
-            </button>
+            {token ? (
+              <button
+                className="add-review-button"
+                onClick={() =>
+                  navigate(
+                    `/add-review/${movie.id}?title=${encodeURIComponent(
+                      movie.title
+                    )}`
+                  )
+                }
+              >
+                ADD REVIEW
+              </button>
+            ) : null}
           </div>
         </div>
       ))}
