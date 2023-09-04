@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function NavBar({ loggedIn, setLoggedIn }) {
+function NavBar({ loggedIn, setLoggedIn, changesHappened, setChangesHappened }) {
   const [userData, setUserData] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
@@ -49,6 +49,11 @@ function NavBar({ loggedIn, setLoggedIn }) {
     }
   };
 
+  const profileClickHandler = () => {
+    navigate(`/profile/${userId}`)
+    setChangesHappened(!changesHappened);
+  }
+
   return (
     <>
       <div id="navbar">
@@ -83,7 +88,7 @@ function NavBar({ loggedIn, setLoggedIn }) {
             <img
               src={userData.avatar}
               id="navbarAvatar"
-              onClick={() => navigate(`/profile/${userId}`)}
+              onClick={profileClickHandler}
             />
           </section>
         ) : (

@@ -15,6 +15,10 @@
   flex-wrap: wrap;
 }
 
+#pageSection {
+  margin: 0 15% 0 15%;
+}
+
 /* Footerbar styles */
 #footerbar {
   background-color: #f0f0f0;
@@ -60,7 +64,7 @@
 }
 
 .spacer {
-  height: 50px;
+  height: 60px;
 }
 
 #navbarAvatar {
@@ -146,4 +150,45 @@
   font-size: 16px;
   margin-top: 10px;
   border-radius: 5px;
+}
+
+/* Profile page */
+
+#profilePage {
+  margin: 20px 0 20px 0;
+}
+
+#profilePage > div:first-child {
+  position: fixed;
+}
+
+#profilePage > div:last-child {
+  margin-left: 450px;
+  width: 100%;
+}
+
+#profilePage > div:last-child > div {
+  position: fixed;
+  top: 73px;
+  background-color: white;
+  border-bottom: solid 3px;
+  width: 49%;
+  padding: 12px;
+}
+
+#profilePage > div:last-child > section {
+  margin-top: 110px;
+  width: 100%;
+}
+
+#profilePage > div:last-child > section > section {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px #ccc solid;
+  background-color: #f9f9f9;
+}
+
+#profilePage > div:last-child > section > section > span {
+  margin-right: 20px;
+  vertical-align: top;
 }

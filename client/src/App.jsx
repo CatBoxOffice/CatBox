@@ -5,11 +5,23 @@ import { useState } from "react";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [changesHappened, setChangesHappened] = useState(false);
 
   return (
     <>
-      <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-      <Router setLoggedIn={setLoggedIn} />
+      <NavBar
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+        changesHappened={changesHappened}
+        setChangesHappened={setChangesHappened}
+      />
+      <section id="pageSection">
+        <Router
+          setLoggedIn={setLoggedIn}
+          changesHappened={changesHappened}
+          setChangesHappened={setChangesHappened}
+        />
+      </section>
       <FooterBar />
     </>
   );
