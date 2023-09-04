@@ -60,7 +60,6 @@ const main = async () => {
     },
   });
 
-
   const user6 = await prisma.user.create({
     data: {
       username: "MrMovieMan",
@@ -129,6 +128,18 @@ const main = async () => {
     },
   });
 
+  const genreScienceFiction = await prisma.genre.create({
+    data: {
+      name: "Science Fiction",
+    },
+  });
+
+  const genreAdventure = await prisma.genre.create({
+    data: {
+      name: "Adventure",
+    },
+  });
+
   const genreRomance = await prisma.genre.create({
     data: {
       name: "Romance",
@@ -149,7 +160,7 @@ const main = async () => {
 
   const genreSuperHero = await prisma.genre.create({
     data: {
-      name: "SuperHero",
+      name: "Superhero",
     },
   });
 
@@ -157,8 +168,8 @@ const main = async () => {
 
   const movies1 = await prisma.movie.create({
     data: {
-      title: "TopGun",
-      description: "A movie about pilots trying to save the country",
+      title: "Top Gun",
+      description: "As students at the United States Navy's elite fighter weapons school compete to be best in the class, one daring young pilot learns a few things from a civilian instructor that are not taught in the classroom.",
       poster:
         "https://m.media-amazon.com/images/M/MV5BZjQxYTA3ODItNzgxMy00N2Y2LWJlZGMtMTRlM2JkZjI1ZDhhXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_.jpg",
       year: 1986,
@@ -172,7 +183,7 @@ const main = async () => {
   const movies2 = await prisma.movie.create({
     data: {
       title: "Keith",
-      description: "Fantastic film that shows us the meaning of love",
+      description: "Natalie, head of her curriculum activities in high school and riding on a tennis scholarship for college, gets Keith as her Chemistry lab partner. As Natalie can be uptight, Keith proves to be the opposite, even while hiding a secret.",
       poster:
         "https://cdn.traileraddict.com/content/image-entertainment/keith.jpg",
       year: 2008,
@@ -185,8 +196,8 @@ const main = async () => {
 
   const movies3 = await prisma.movie.create({
     data: {
-      title: "Terminal",
-      description: "Tom Hanks got stuck at a terminal, and has accent",
+      title: "The Terminal",
+      description: "An Eastern European tourist unexpectedly finds himself stranded in JFK airport, and must take up temporary residence there.",
       poster:
         "https://www.originalfilmart.com/cdn/shop/products/Terminal_2004_original_film_art_1200x.jpg?v=1602086404",
       year: 2004,
@@ -200,7 +211,7 @@ const main = async () => {
   const movies4 = await prisma.movie.create({
     data: {
       title: "Maverick",
-      description: " This movie has nothing to do with Tom Cruise",
+      description: "Bret Maverick, needing money for a poker tournament, faces various comic mishaps and challenges, including a charming woman thief.",
       poster:
         "https://www.originalfilmart.com/cdn/shop/files/Maverick_1994_original_film_art.webp?v=1686774401",
       year: 1994,
@@ -215,7 +226,7 @@ const main = async () => {
     data: {
       title: "The Avengers",
       description:
-        " It s a long movie about a team saving the planet for the fifth time",
+        "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
       poster:
         "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
       year: 2012,
@@ -233,8 +244,7 @@ const main = async () => {
       title: "Oppenheimer",
       description:
         "The story of American scientist, J. Robert Oppenheimer, and his role in the development of the atomic bomb.",
-      poster:
-        "https://m.media-amazon.com/images/I/71xDtUSyAKL._AC_SL1500_.jpg",
+      poster: "https://m.media-amazon.com/images/I/71xDtUSyAKL._AC_SL1500_.jpg",
       year: 2023,
       rating: "R",
       director: "Christopher Nolan",
@@ -248,8 +258,7 @@ const main = async () => {
       title: "Barbie",
       description:
         "Barbie suffers a crisis that leads her to question her world and her existence.",
-      poster:
-        "https://m.media-amazon.com/images/I/71BgdzmFDAL._AC_SL1500_.jpg",
+      poster: "https://m.media-amazon.com/images/I/71BgdzmFDAL._AC_SL1500_.jpg",
       year: 2023,
       rating: "PG-13",
       director: "Greta Gerwig",
@@ -338,8 +347,7 @@ const main = async () => {
       title: "Apocalypto",
       description:
         " As the Mayan kingdom faces its decline, a young man is taken on a perilous journey to a world ruled by fear and oppression.",
-      poster:
-        "https://m.media-amazon.com/images/I/71d+Ko8zA4L.jpg",
+      poster: "https://m.media-amazon.com/images/I/71d+Ko8zA4L.jpg",
       year: 2006,
       rating: "R",
       director: "Mel Gibson",
@@ -368,8 +376,7 @@ const main = async () => {
       title: "Everything Everywhere All at Once",
       description:
         "A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led.",
-      poster:
-        "https://m.media-amazon.com/images/I/61yIwId5-bL._AC_SL1500_.jpg",
+      poster: "https://m.media-amazon.com/images/I/61yIwId5-bL._AC_SL1500_.jpg",
       year: 2022,
       rating: "R",
       director: "Daniels",
@@ -413,8 +420,7 @@ const main = async () => {
       title: "Amores Perros",
       description:
         "A horrific car accident connects three stories, each involving characters dealing with loss, regret, and life's harsh realities, all in the name of love.",
-      poster:
-        "https://m.media-amazon.com/images/I/818ggxbKJbL._SL1500_.jpg",
+      poster: "https://m.media-amazon.com/images/I/818ggxbKJbL._SL1500_.jpg",
       year: 2000,
       rating: "R",
       director: "Alejandro G. Iñárritu",
@@ -500,6 +506,26 @@ const main = async () => {
         movieId: movies10.id,
         genreId: genreAction.id,
       },
+      {
+        movieId: movies22.id,
+        genreId: genreAction.id,
+      },
+      {
+        movieId: movies19.id,
+        genreId: genreAction.id,
+      },
+      {
+        movieId: movies17.id,
+        genreId: genreAction.id,
+      },
+      {
+        movieId: movies15.id,
+        genreId: genreAction.id,
+      },
+      {
+        movieId: movies13.id,
+        genreId: genreAction.id,
+      },
     ],
   });
 
@@ -521,6 +547,62 @@ const main = async () => {
       {
         movieId: movies6.id,
         genreId: genreDrama.id,
+      },
+      {
+        movieId: movies18.id,
+        genreId: genreDrama.id,
+      },
+      {
+        movieId: movies17.id,
+        genreId: genreDrama.id,
+      },
+      {
+        movieId: movies11.id,
+        genreId: genreDrama.id,
+      },
+    ],
+  });
+
+  // ADVENTURE GENRE
+  await prisma.movies_Genres.createMany({
+    data: [
+      {
+        movieId: movies15.id,
+        genreId: genreAdventure.id,
+      },
+      {
+        movieId: movies14.id,
+        genreId: genreAdventure.id,
+      },
+      {
+        movieId: movies13.id,
+        genreId: genreAdventure.id,
+      },
+      {
+        movieId: movies19.id,
+        genreId: genreAdventure.id,
+      },
+      {
+        movieId: movies10.id,
+        genreId: genreAdventure.id,
+      },
+      {
+        movieId: movies4.id,
+        genreId: genreAdventure.id,
+      },
+    ],
+  });
+
+  // SCIENCE FICTION GENRE
+  await prisma.movies_Genres.createMany({
+    data: [
+      {
+        movieId: movies15.id,
+        genreId: genreScienceFiction.id,
+      },
+      {
+        movieId: movies14.id,
+        genreId: genreScienceFiction.id,
       },
     ],
   });
@@ -548,29 +630,51 @@ const main = async () => {
         movieId: movies7.id,
         genreId: genreComedy.id,
       },
+      {
+        movieId: movies21.id,
+        genreId: genreComedy.id,
+      },
+      {
+        movieId: movies20.id,
+        genreId: genreComedy.id,
+      },
+      {
+        movieId: movies16.id,
+        genreId: genreComedy.id,
+      },
     ],
   });
 
   // SUPERHERO GENRE
   await prisma.movies_Genres.createMany({
     data: [
-        {
-          movieId: movies5.id,
-          genreId: genreSuperHero.id,
-        },
-        {
-          movieId: movies8.id,
-          genreId: genreSuperHero.id,
-        },
-      ],
-    });
+      {
+        movieId: movies5.id,
+        genreId: genreSuperHero.id,
+      },
+      {
+        movieId: movies8.id,
+        genreId: genreSuperHero.id,
+      },
+      {
+        movieId: movies22.id,
+        genreId: genreSuperHero.id,
+      },
+    ],
+  });
 
   // HORROR GENRE
-  await prisma.movies_Genres.create({
-    data: {
-      movieId: movies9.id,
-      genreId: genreHorror.id,
-    },
+  await prisma.movies_Genres.createMany({
+    data: [
+      {
+        movieId: movies9.id,
+        genreId: genreHorror.id,
+      },
+      {
+        movieId: movies21.id,
+        genreId: genreHorror.id,
+      },
+    ],
   });
 
   // TAGS:
@@ -695,7 +799,8 @@ const main = async () => {
       movieId: movies7.id,
       grade: 94,
       title: "Barbie's straight gas, bro",
-      content: "Margo Robbie's a total smoke show, bro. No cap frfr. Movie's a little too pink though, bro frfr.",
+      content:
+        "Margo Robbie's a total smoke show, bro. No cap frfr. Movie's a little too pink though, bro frfr.",
     },
   });
 
@@ -705,7 +810,8 @@ const main = async () => {
       movieId: movies6.id,
       grade: 50,
       title: "Not for me...",
-      content: "All that nuclear radiation must be terrible for everyone's plants.",
+      content:
+        "All that nuclear radiation must be terrible for everyone's plants.",
     },
   });
 
@@ -715,7 +821,8 @@ const main = async () => {
       movieId: movies7.id,
       grade: 99,
       title: "Love love love",
-      content: "Loved this movie. Reminded me off all my Barbie dolls I used to have.",
+      content:
+        "Loved this movie. Reminded me off all my Barbie dolls I used to have.",
     },
   });
 
@@ -725,7 +832,8 @@ const main = async () => {
       movieId: movies8.id,
       grade: 89,
       title: "Pretty dope flick",
-      content: "Took Stevie to see this movie. He paid, of course. Entertaining movie",
+      content:
+        "Took Stevie to see this movie. He paid, of course. Entertaining movie",
     },
   });
 
@@ -735,7 +843,8 @@ const main = async () => {
       movieId: movies9.id,
       grade: 96,
       title: "Better than ever!",
-      content: "John Carpenter's movies are always awesome...especially on the big screen!",
+      content:
+        "John Carpenter's movies are always awesome...especially on the big screen!",
     },
   });
 
@@ -745,7 +854,8 @@ const main = async () => {
       movieId: movies10.id,
       grade: 91,
       title: "Best action franchise",
-      content: "Tom Cruise is the man. Goes hard with the stunts and looks great running.",
+      content:
+        "Tom Cruise is the man. Goes hard with the stunts and looks great running.",
     },
   });
 
@@ -755,7 +865,8 @@ const main = async () => {
       movieId: movies8.id,
       grade: 35,
       title: "Horrible waste of time",
-      content: "I would have rather watched Mission Impossible again...I blame my nephew, Gabriel.",
+      content:
+        "I would have rather watched Mission Impossible again...I blame my nephew, Gabriel.",
     },
   });
 
@@ -765,7 +876,8 @@ const main = async () => {
       movieId: movies10.id,
       grade: 77,
       title: "Not the best M.I. movie but still good",
-      content: "I love seeing this franchise grow but would have liked more razzle dazzle.",
+      content:
+        "I love seeing this franchise grow but would have liked more razzle dazzle.",
     },
   });
 
@@ -775,7 +887,8 @@ const main = async () => {
       movieId: movies9.id,
       grade: 93,
       title: "John Carpenter is the best",
-      content: "Happy they did another theatrical run of this cult masterpiece. Wore out my VHS copy 13 years ago.",
+      content:
+        "Happy they did another theatrical run of this cult masterpiece. Wore out my VHS copy 13 years ago.",
     },
   });
 
@@ -785,7 +898,8 @@ const main = async () => {
       movieId: movies2.id,
       grade: 25,
       title: "Movie needed more bugs",
-      content: "I kept looking for bugs but couldn't find any...it's a shame. BugGuy out.",
+      content:
+        "I kept looking for bugs but couldn't find any...it's a shame. BugGuy out.",
     },
   });
 
@@ -795,7 +909,8 @@ const main = async () => {
       movieId: movies8.id,
       grade: 10,
       title: "Not an accurate portayal of a Beetle",
-      content: "Trust me, I collect Beetles and none of them have traits like this. BugGuy out.",
+      content:
+        "Trust me, I collect Beetles and none of them have traits like this. BugGuy out.",
     },
   });
 
@@ -817,7 +932,8 @@ const main = async () => {
       movieId: movies22.id,
       grade: 2,
       title: "Why did this get made?",
-      content: "I understand Shaq was hot in the 90's by good lord. Into the catbox you go!",
+      content:
+        "I understand Shaq was hot in the 90's by good lord. Into the catbox you go!",
     },
   });
 
@@ -827,7 +943,8 @@ const main = async () => {
       movieId: movies16.id,
       grade: 75,
       title: "Liked it but didn't love it",
-      content: "Felt the story was too silly to be believable. Pedro Pascal is a wonderful actor though. No catbox for you.",
+      content:
+        "Felt the story was too silly to be believable. Pedro Pascal is a wonderful actor though. No catbox for you.",
     },
   });
 
@@ -847,7 +964,8 @@ const main = async () => {
       movieId: movies20.id,
       grade: 60,
       title: "Had potential but wound up suckin",
-      content: "This movie is a prime case of wishing Chris Farley was still alive...you'd get a cheeseburger for that.",
+      content:
+        "This movie is a prime case of wishing Chris Farley was still alive...you'd get a cheeseburger for that.",
     },
   });
 
@@ -857,7 +975,8 @@ const main = async () => {
       movieId: movies17.id,
       grade: 78,
       title: "I don't speak Korean",
-      content: "But I'm pretty sure they were talking about how cool bugs are. BugGuy out",
+      content:
+        "But I'm pretty sure they were talking about how cool bugs are. BugGuy out",
     },
   });
 
@@ -867,7 +986,8 @@ const main = async () => {
       movieId: movies15.id,
       grade: 50,
       title: "I didn't get it",
-      content: "Came off as vulgar and confusing. Jamie Lee Curtis still got it goin on though...golly",
+      content:
+        "Came off as vulgar and confusing. Jamie Lee Curtis still got it goin on though...golly",
     },
   });
 
@@ -877,7 +997,8 @@ const main = async () => {
       movieId: movies13.id,
       grade: 50,
       title: "Incredible movie",
-      content: "Jaguar Paw is the coolest. He's one tough customer. I'd shake that man's hand if I could.",
+      content:
+        "Jaguar Paw is the coolest. He's one tough customer. I'd shake that man's hand if I could.",
     },
   });
 
@@ -887,7 +1008,8 @@ const main = async () => {
       movieId: movies14.id,
       grade: 60,
       title: "I wouldn't want to live in that world",
-      content: "The post-apocalyptic world has lots of vegitation but not the fun plants...only the sad ones.",
+      content:
+        "The post-apocalyptic world has lots of vegitation but not the fun plants...only the sad ones.",
     },
   });
 
@@ -897,7 +1019,8 @@ const main = async () => {
       movieId: movies11.id,
       grade: 55,
       title: "Not a Marky Mark guy",
-      content: "I could probably take him in a fight. I was distracted during the movie cuz I wanted to fight him.",
+      content:
+        "I could probably take him in a fight. I was distracted during the movie cuz I wanted to fight him.",
     },
   });
 
@@ -907,7 +1030,8 @@ const main = async () => {
       movieId: movies15.id,
       grade: 85,
       title: "Great fight scenes",
-      content: "Didn't really get any of the story line but the fighting was tight, bro. So sick. All that fighting and stuff.",
+      content:
+        "Didn't really get any of the story line but the fighting was tight, bro. So sick. All that fighting and stuff.",
     },
   });
 
@@ -917,7 +1041,8 @@ const main = async () => {
       movieId: movies18.id,
       grade: 82,
       title: "A bit of a downer",
-      content: "I watched this at work and my boss asked why I was crying and I told him I had something in my eye. Bro doesn't know I just watch and review movies all day frfr tight bro.",
+      content:
+        "I watched this at work and my boss asked why I was crying and I told him I had something in my eye. Bro doesn't know I just watch and review movies all day frfr tight bro.",
     },
   });
 
@@ -927,7 +1052,8 @@ const main = async () => {
       movieId: movies12.id,
       grade: 100,
       title: "My absolute favorite",
-      content: "Sometimes you don't need dialogue or narrative. The power of beautiful imagery and an incredible soundtrack makes this film so special.",
+      content:
+        "Sometimes you don't need dialogue or narrative. The power of beautiful imagery and an incredible soundtrack makes this film so special.",
     },
   });
 
@@ -957,7 +1083,8 @@ const main = async () => {
       movieId: movies19.id,
       grade: 40,
       title: "This was really bad",
-      content: "I usually like movies with The Rock but this one is just too bad.",
+      content:
+        "I usually like movies with The Rock but this one is just too bad.",
     },
   });
 
@@ -967,7 +1094,8 @@ const main = async () => {
       movieId: movies22.id,
       grade: 100,
       title: "You just don't get it",
-      content: "Everyone hates this movie but I think it's great...so do my bugs. BugGuy out.",
+      content:
+        "Everyone hates this movie but I think it's great...so do my bugs. BugGuy out.",
     },
   });
 
@@ -977,7 +1105,8 @@ const main = async () => {
       movieId: movies12.id,
       grade: 100,
       title: "Influential",
-      content: "The synchronicity of motion control time lapse filmmaking and Philip Glass's score is a treat that was ahead of it's time.",
+      content:
+        "The synchronicity of motion control time lapse filmmaking and Philip Glass's score is a treat that was ahead of it's time.",
     },
   });
 
@@ -987,7 +1116,8 @@ const main = async () => {
       movieId: movies16.id,
       grade: 95,
       title: "Nicholas Cage is a National Treasure",
-      content: "I'm not saying that because of that incredible movie...someone should give him the key to America",
+      content:
+        "I'm not saying that because of that incredible movie...someone should give him the key to America",
     },
   });
 
@@ -997,7 +1127,8 @@ const main = async () => {
       movieId: movies15.id,
       grade: 80,
       title: "Makes me want to put googly eyes on my plants",
-      content: "If Jobu Tupaki came around my garden I'd throw salt on her like I do for snails.",
+      content:
+        "If Jobu Tupaki came around my garden I'd throw salt on her like I do for snails.",
     },
   });
 
@@ -1010,7 +1141,6 @@ const main = async () => {
       content: "This movie gets a lot of hate but Adam Sandler is the man.",
     },
   });
-
 
   // REVIEW_TAGS:
 
