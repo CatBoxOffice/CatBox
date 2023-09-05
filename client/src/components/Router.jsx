@@ -20,7 +20,10 @@ const Router = ({ setLoggedIn, changesHappened, setChangesHappened }) => {
         <Route path="/add-movie" element={<AddMovie />} />
         <Route path="/movies" element={<AllMovies />} />
         <Route path="/movies/:movieId" element={<SingleMovie />} />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/register"
+          element={<Register setLoggedIn={setLoggedIn} />}
+        />
         <Route path="/add-review/:movieId" element={<AddReview />} />
         <Route
           path="/profile/:id"

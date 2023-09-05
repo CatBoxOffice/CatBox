@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RegisterForm from "./RegisterForm";
 
-const Register = () => {
+const Register = ({ setLoggedIn }) => {
   const [registerInfo, setRegisterInfo] = useState({});
   const [message, setMessage] = useState("");
 
@@ -20,12 +20,13 @@ const Register = () => {
         });
 
         const result = await response.json();
-        
+
         localStorage.setItem(`token`, result.token);
+        setLoggedIn(true);
         navigate(`/`);
       } catch (error) {
         console.log(error);
-        setMessage(`Could not register`)
+        setMessage(`Could not register`);
       }
     };
 
