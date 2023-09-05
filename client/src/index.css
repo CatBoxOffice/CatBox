@@ -3,7 +3,7 @@ body {
 }
 
 #singleMoviePoster {
-  width: 400px;
+  height: 400px;
 }
 
 .userAvatar {
@@ -204,12 +204,26 @@ body {
 }
 
 #singleMoviePage > section:first-child {
-  width: 500px;
+  width: 400px;
   position: fixed;
 }
 
 #singleMoviePage > section:last-child {
-  margin-left: 550px;
+  margin-left: 450px;
+  width: 100%;
+}
+
+#singleMovieTitle {
+  position: fixed;
+  top: 73px;
+  background-color: white;
+  height: 70px;
+  width: 46%;
+  border-bottom: solid 3px;
+}
+
+#reviewsSection {
+  margin-top: 75px;
 }
 
 .movieReview {
@@ -218,4 +232,3 @@ body {
   border: 1px #ccc solid;
   background-color: #f9f9f9;
 }
-
