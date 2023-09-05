@@ -76,7 +76,7 @@ function NavBar({
         <Link to={"/movies"}>All Movies</Link>
         <Link to={"/rubric"}>Grading Rubric</Link>
         {/* Links visible to admins only */}
-        {isAdmin ? <Link to={"/users"}>All Users</Link> : null}
+        {isAdmin ? <Link to={"/users"}>Admin</Link> : null}
 
         <br></br>
         <br></br>

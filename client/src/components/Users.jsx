@@ -77,21 +77,25 @@ const Users = () => {
 
   return (
     <section id="userPage" className="flex">
-      <h1>Users</h1>
+      <h1>Admin</h1>
+      <button style={{ width: "100px", background: "black", color: "white"}}>Add Movie</button>
+      <br></br>
+      <h2>All Users</h2>
       {isAdmin ? (
         users.map((user) => (
-          <section key={user.id} className="flex">
+          <section key={user.id} className="film-box">
             <section>
               <img
                 src={user.avatar}
                 className="userAvatar"
+                style={{ width: "200px", height: "100%" }}
                 onClick={() => clickHandler(user.id)}
               />
             </section>
-            <section>
+            <section className="film-details">
               <h3>{user.username}</h3>
               <p>Email: {user.email}</p>
-              <button onClick={() => deleteHandler(user.id)}>
+              <button onClick={() => deleteHandler(user.id)} style={{ background: "black", color: "white" }}>
                 Delete User
               </button>
             </section>
