@@ -17,6 +17,7 @@ const App = () => {
       />
       <section id="pageSection">
         <Router
+          loggedIn={loggedIn}
           setLoggedIn={setLoggedIn}
           changesHappened={changesHappened}
           setChangesHappened={setChangesHappened}

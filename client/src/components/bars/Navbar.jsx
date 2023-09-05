@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Login from "../login/Login";
+import Register from "../register/Register";
 
-function NavBar({ loggedIn, setLoggedIn, changesHappened, setChangesHappened }) {
+function NavBar({
+  loggedIn,
+  setLoggedIn,
+  changesHappened,
+  setChangesHappened,
+}) {
   const [userData, setUserData] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
 
   const navigate = useNavigate(); // Hook for navigation
 
@@ -50,9 +59,9 @@ function NavBar({ loggedIn, setLoggedIn, changesHappened, setChangesHappened }) 
   };
 
   const profileClickHandler = () => {
-    navigate(`/profile/${userId}`)
+    navigate(`/profile/${userId}`);
     setChangesHappened(!changesHappened);
-  }
+  };
 
   return (
     <>
@@ -92,10 +101,27 @@ function NavBar({ loggedIn, setLoggedIn, changesHappened, setChangesHappened }) 
             />
           </section>
         ) : (
-          <Link to={"/login"}>Log In</Link>
+          <button onClick={() => setShowLogin(!showLogin)}>Login</button>
         )}
       </div>
       <div className="spacer"></div>
+      <section id="loginSection">
+        {showLogin ? (
+          showRegister ? (
+            <Register
+              setLoggedIn={setLoggedIn}
+              setShowRegister={setShowRegister}
+              setShowLogin={setShowLogin}
+            />
+          ) : (
+            <Login
+              setLoggedIn={setLoggedIn}
+              setShowRegister={setShowRegister}
+              setShowLogin={setShowLogin}
+            />
+          )
+        ) : null}
+      </section>
     </>
   );
 }

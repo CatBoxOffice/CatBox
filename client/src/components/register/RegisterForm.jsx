@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const RegisterForm = ({ setRegisterInfo }) => {
+const RegisterForm = ({ setRegisterInfo, setShowRegister }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState("");
@@ -20,7 +20,7 @@ const RegisterForm = ({ setRegisterInfo }) => {
     <>
       {message ? <p>{message}</p> : null}
       <form onSubmit={registerHandler}>
-      <label>
+        <label>
           Username:{" "}
           <input
             type="text"
@@ -72,7 +72,7 @@ const RegisterForm = ({ setRegisterInfo }) => {
         <br />
         <button>Register</button>
       </form>
-      <Link to={`/login`}>Already a User? Log In!</Link>
+      <Link onClick={() => setShowRegister(false)}>Already a User? Log In!</Link>
     </>
   );
 };
