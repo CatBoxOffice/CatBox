@@ -60,7 +60,7 @@ const SingleMovie = () => {
   };
 
   return (
-    <section>
+    <section id="singleMoviePage" className="flex">
       <section>
         <img src={movie.poster} id="singleMoviePoster" />
         <h2>{movie.title}</h2>
