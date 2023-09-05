@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Home.css";
 
 const Home = () => {
   const [userData, setUserData] = useState({});
@@ -76,34 +75,31 @@ const Home = () => {
           <div className="film-details">
             <h2>{movie.title}</h2>
             <p>
-              Genre:{" "}
+              <b>Genre:</b>{" "}
               {movie.Movies_Genres.map((genre) => (
-                <>{genre.genres.name} </>
+                <span key={genre.genres.name}>{genre.genres.name} </span>
               ))}
             </p>
             <p>{movie.description}</p>
             <p>Rated {movie.rating}</p>
-            <p>Director: {movie.director}</p>
             <p>Released {movie.year}</p>
-            <p>Studio: {movie.studio}</p>
-            <p>Language: {movie.language}</p>
-            {
-              token ?
-
+            <p><b>Director:</b> {movie.director}</p>
+            <p><b>Studio:</b> {movie.studio}</p>
+            <p><b>Language:</b> {movie.language}</p>
+            {token ? (
               <button
-              className="add-review-button"
-              onClick={() =>
-                navigate(
-                  `/add-review/${movie.id}?title=${encodeURIComponent(
-                    movie.title
+                className="add-review-button"
+                onClick={() =>
+                  navigate(
+                    `/add-review/${movie.id}?title=${encodeURIComponent(
+                      movie.title
                     )}`
-                    )
-                  }
-                  >
-              ADD REVIEW
-            </button>
-            : null
-            }
+                  )
+                }
+              >
+                ADD REVIEW
+              </button>
+            ) : null}
           </div>
         </div>
       ))}

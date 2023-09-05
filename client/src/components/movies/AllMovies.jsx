@@ -28,7 +28,6 @@ const AllMovies = () => {
       });
 
       setMovies(movieData);
-      console.log("Fetched movie data:", movieData);
     } catch (error) {
       console.error(`Error fetching movies:', error`);
     }
@@ -56,22 +55,22 @@ const AllMovies = () => {
           <div className="film-details">
             <h2>{movie.title}</h2>
             <p style={{ display: "inline" }}>
-              Genre:{" "}
+              <b>Genre:</b>{" "}
               {movie.Movies_Genres && movie.Movies_Genres.length > 0
                 ? movie.Movies_Genres.map((genre, index) => (
-                    <div key={index} style={{ display: "inline" }}>
+                    <span key={index} style={{ display: "inline" }}>
                       {genre.genres.name}
                       {index < movie.Movies_Genres.length - 1 ? ", " : ""}
-                    </div>
+                    </span>
                   ))
                 : "N/A"}
             </p>
             <p>{movie.description}</p>
             <p>Rated {movie.rating}</p>
-            <p>Director: {movie.director}</p>
             <p>Released {movie.year}</p>
-            <p>Studio: {movie.studio}</p>
-            <p>Language: {movie.language}</p>
+            <p><b>Director:</b> {movie.director}</p>
+            <p><b>Studio:</b> {movie.studio}</p>
+            <p><b>Language:</b> {movie.language}</p>
             {/* <button onClick={() => navigate(`/add-review/`)}>ADD REVIEW</button> */}
             {token ? (
               <button

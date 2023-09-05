@@ -15,7 +15,35 @@
   flex-wrap: wrap;
 }
 
+#pageSection {
+  margin: 0 15% 0 15%;
+}
 
+/* Footerbar styles */
+#footerbar {
+  background-color: #f0f0f0;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  border-top: solid 3px;
+}
+
+.footerThumbnail {
+  height: 30px;
+}
+
+#gitLinks {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#gitLinks > div {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
 
 /* Navbar styles */
 #navbar {
@@ -26,6 +54,17 @@
   /* Background color for the navbar */
   padding: 10px 20px;
   /* Adjust padding as needed */
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 98%;
+  height: 50px;
+  border-bottom: solid 3px;
+}
+
+.spacer {
+  height: 60px;
 }
 
 #navbarAvatar {
@@ -47,10 +86,10 @@
   text-decoration: none;
   color: #333;
   /* Text color for the logo */
-
 }
 
 /* Search bar styles */
+
 #navbar form {
   display: flex;
   align-items: center;
@@ -59,7 +98,7 @@
 #navbar input[type="text"] {
   padding: 5px;
   margin-right: 10px;
-
+  width: 400px;
 }
 
 #navbar button[type="submit"] {
@@ -76,12 +115,80 @@
   color: #333;
   /* Text color for the navigation links */
   margin-left: 20px;
-
-
 }
-
 
 #navbar a.active {
   color: #007bff;
+}
 
+/* Home.css */
+
+.film-box {
+  display: flex;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.film-thumbnail img {
+  width: 240px;
+  height: 345px;
+  object-fit: cover;
+}
+
+.film-details {
+  margin-left: 20px;
+}
+
+.add-review-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+/* Profile page */
+
+#profilePage {
+  margin: 20px 0 20px 0;
+}
+
+#profilePage > div:first-child {
+  position: fixed;
+}
+
+#profilePage > div:last-child {
+  margin-left: 450px;
+  width: 100%;
+}
+
+#profilePage > div:last-child > div {
+  position: fixed;
+  top: 73px;
+  background-color: white;
+  border-bottom: solid 3px;
+  width: 49%;
+  padding: 12px;
+}
+
+#profilePage > div:last-child > section {
+  margin-top: 110px;
+  width: 100%;
+}
+
+#profilePage > div:last-child > section > section {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px #ccc solid;
+  background-color: #f9f9f9;
+}
+
+#profilePage > div:last-child > section > section > span {
+  margin-right: 20px;
+  vertical-align: top;
 }
