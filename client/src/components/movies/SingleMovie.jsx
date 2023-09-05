@@ -60,7 +60,7 @@ const SingleMovie = () => {
   };
 
   return (
-    <section>
+    <section id="singleMoviePage" className="flex">
       <section>
         <img src={movie.poster} id="singleMoviePoster" />
         <h2>{movie.title}</h2>
@@ -93,7 +93,7 @@ const SingleMovie = () => {
               ))
             : "N/A"}
         </p>
-        <p>{movie.description}</p>
+        <p className="movie-description">{movie.description}</p>
         <p>Rated {movie.rating}</p>
         <p>Director: {movie.director}</p>
         <p>Released {movie.year}</p>

@@ -995,7 +995,7 @@ const main = async () => {
     data: {
       userId: user7.id,
       movieId: movies13.id,
-      grade: 50,
+      grade: 90,
       title: "Incredible movie",
       content:
         "Jaguar Paw is the coolest. He's one tough customer. I'd shake that man's hand if I could.",
