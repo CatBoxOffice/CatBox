@@ -8,7 +8,7 @@ const SingleMovie = () => {
   const [movieOverallGrade, setMovieOverallGrade] = useState(0);
   const navigate = useNavigate();
   const { movieId } = useParams();
-  console.log(movieOverallGrade)
+  console.log(movieOverallGrade);
 
   useEffect(() => {
     const movieGrades = [];
@@ -63,26 +63,27 @@ const SingleMovie = () => {
     <section id="singleMoviePage" className="flex">
       <section>
         <img src={movie.poster} id="singleMoviePoster" />
-        <h2>{movie.title}</h2>
 
         <section>
           <span>Overall Rating: </span>
+          <br />
           {movieOverallGrade >= 75 ? (
-                    <img
-                      src={cheeseburger}
-                      alt="Has Cheezburger"
-                      style={{ width: "120px", height: "100px" }}
-                    />
-                  ) : (
-                    <img
-                      src={kittylitter}
-                      alt="Cat Scat"
-                      style={{ width: "120px", height: "100px" }}
-                    />
-                  )}
+            <img
+              src={cheeseburger}
+              alt="Has Cheezburger"
+              style={{ width: "75px", height: "50px" }}
+            />
+          ) : (
+            <img
+              src={kittylitter}
+              alt="Cat Scat"
+              style={{ width: "75px", height: "50px" }}
+            />
+          )}
         </section>
 
         <p style={{ display: "inline" }}>
+          <br />
           Genre:{" "}
           {movie.Movies_Genres && movie.Movies_Genres.length > 0
             ? movie.Movies_Genres.map((genre, index) => (
@@ -105,11 +106,15 @@ const SingleMovie = () => {
       </section>
 
       <section>
+        <section id="singleMovieTitle">
+          <h2>{movie.title}</h2>
+        </section>
+
         <section id="reviewsSection">
           {movie.reviews ? (
             <div>
               {movie.reviews.map((review) => (
-                <section key={review.id} className="movieReview" >
+                <section key={review.id} className="movieReview">
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <Link to={`/profile/${review.userId}`}>
                       <img
