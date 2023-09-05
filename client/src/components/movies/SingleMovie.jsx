@@ -93,7 +93,7 @@ const SingleMovie = () => {
               ))
             : "N/A"}
         </p>
-        <p>{movie.description}</p>
+        <p className="movie-description">{movie.description}</p>
         <p>Rated {movie.rating}</p>
         <p>Director: {movie.director}</p>
         <p>Released {movie.year}</p>

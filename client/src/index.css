@@ -1,3 +1,7 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 #singleMoviePoster {
   width: 400px;
 }
@@ -200,55 +204,8 @@
   margin: 20px 0 20px 0;
 }
 
-#singleMoviePage > div:first-child {
-  position: fixed;
-}
-
-#singleMoviePage > div:last-child {
-  margin-left: 450px;
-  width: calc(100% - 450px);
-}
-
-#singleMoviePage > div:last-child > div {
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px; /* Add rounded corners */
-  padding: 20px; /* Add padding to create space inside the container */
-  margin-bottom: 20px; /* Add margin to separate it from other elements */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-}
-
-#singleMoviePage > div:last-child > section {
-  margin-top: 110px;
-  width: 100%;
-}
-
-#singleMoviePage > div:last-child > section > section {
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px #ccc solid;
-  background-color: #f9f9f9;
-}
-
-#singleMoviePage > div:last-child > section > section > span {
-  margin-right: 20px;
-  vertical-align: top;
-}
-
-#singleMoviePage > div:last-child > section {
-  margin-top: 110px;
-  width: 100%;
-}
-
-/* Add maximum width to the description element */
-#singleMoviePage > div:last-child > section > p {
-  max-width: 50%; /* Adjust the value to your preference */
-  margin-right: auto; /* Center-align the description within the container */
-  margin-left: auto;
-}
-
 .movie-description {
-  max-width: 50%;
+  max-width: 70%;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 0px;
 }
