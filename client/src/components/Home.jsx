@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ loggedIn }) => {
   const [userData, setUserData] = useState({});
   const [movies, setMovies] = useState([]);
   const token = localStorage.getItem(`token`);
@@ -14,7 +14,7 @@ const Home = () => {
       const tokenId = JSON.parse(atob(tokenArr[1])).id;
       fetchUserData(tokenId);
     }
-  }, []);
+  }, [loggedIn]);
 
   const fetchMovies = async () => {
     try {
@@ -83,9 +83,15 @@ const Home = () => {
             <p>{movie.description}</p>
             <p>Rated {movie.rating}</p>
             <p>Released {movie.year}</p>
-            <p><b>Director:</b> {movie.director}</p>
-            <p><b>Studio:</b> {movie.studio}</p>
-            <p><b>Language:</b> {movie.language}</p>
+            <p>
+              <b>Director:</b> {movie.director}
+            </p>
+            <p>
+              <b>Studio:</b> {movie.studio}
+            </p>
+            <p>
+              <b>Language:</b> {movie.language}
+            </p>
             {token ? (
               <button
                 className="add-review-button"

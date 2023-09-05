@@ -8,7 +8,6 @@ const SingleMovie = () => {
   const [movieOverallGrade, setMovieOverallGrade] = useState(0);
   const navigate = useNavigate();
   const { movieId } = useParams();
-  console.log(movieOverallGrade);
 
   useEffect(() => {
     const movieGrades = [];

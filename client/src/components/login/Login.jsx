@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import LoginForm from "./LoginForm";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setLoggedIn }) => {
+const Login = ({ setLoggedIn, setShowRegister, setShowLogin }) => {
   const [loginInfo, setLoginInfo] = useState({});
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
@@ -26,6 +26,7 @@ const Login = ({ setLoggedIn }) => {
       if (result.token) {
         localStorage.setItem(`token`, result.token);
         setLoggedIn(true);
+        setShowLogin(false);
         navigate(`/`);
       } else {
         setMessage(result.message);
@@ -38,7 +39,10 @@ const Login = ({ setLoggedIn }) => {
   return (
     <>
       {message ? <p>{message}</p> : null}
-      <LoginForm setLoginInfo={setLoginInfo} />
+      <LoginForm
+        setLoginInfo={setLoginInfo}
+        setShowRegister={setShowRegister}
+      />
     </>
   );
 };

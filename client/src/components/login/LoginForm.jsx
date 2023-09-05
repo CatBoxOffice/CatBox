@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const LoginForm = ({ setLoginInfo }) => {
+const LoginForm = ({ setLoginInfo, setShowRegister }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -35,7 +35,7 @@ const LoginForm = ({ setLoginInfo }) => {
         <br />
         <button>Login</button>
       </form>
-      <Link to={`/register`}>Not a User? Register!</Link>
+      <Link onClick={() => setShowRegister(true)}>Not a User? Register!</Link>
     </>
   );
 };
