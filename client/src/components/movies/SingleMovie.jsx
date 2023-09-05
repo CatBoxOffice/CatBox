@@ -109,7 +109,7 @@ const SingleMovie = () => {
           {movie.reviews ? (
             <div>
               {movie.reviews.map((review) => (
-                <section key={review.id}>
+                <section key={review.id} className="movieReview" >
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <Link to={`/profile/${review.userId}`}>
                       <img
